@@ -70,15 +70,16 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 				continue;
 			}
 
-			$terms = get_terms(
+			$terms = apply_filters( 'agentpress_get_terms', get_terms(
 				$tax,
 				array(
-					'orderby'      => 'count',
-					'order'        => 'DESC',
+					'orderby'      => 'name',
+					'order'        => 'ASC',
 					'number'       => 100,
 					'hierarchical' => false,
 				)
-			);
+			), $tax );
+
 
 			if ( empty( $terms ) ) {
 				continue;
