@@ -162,6 +162,7 @@ class AgentPress_Taxonomies {
 			'hierarchical' => true,
 			'rewrite'      => array( 'slug' => $sanitized_id ),
 			'editable'     => 1,
+			'show_in_rest' => true,
 		);
 
 		$tax = array( $sanitized_id => $args );
@@ -276,6 +277,7 @@ class AgentPress_Taxonomies {
 			'hierarchical' => true,
 			'rewrite'      => array( 'slug' => $id ),
 			'editable'     => 1,
+			'show_in_rest' => true,
 		);
 
 		$tax = array( $id => $args );
@@ -361,6 +363,7 @@ class AgentPress_Taxonomies {
 					'features',
 				),
 				'editable'     => 0,
+				'show_in_rest' => true,
 			),
 		);
 
