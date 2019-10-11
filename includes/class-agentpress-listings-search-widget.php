@@ -85,9 +85,14 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 				continue;
 			}
 
-			$current = ! empty( $wp_query->query_vars[ $tax ] ) ? $wp_query->query_vars[ $tax ] : '';
+			$current = '';
+			$term = get_query_var( $tax ) ? get_term_by( 'slug', get_query_var( $tax ), $tax ) : '';
+			if ( $term ) {
+				$current = $term->slug;
+			}
+			// $current = ! empty( $wp_query->query_vars[ $tax ] ) ? $wp_query->query_vars[ $tax ] : '';
 			echo "<select name='" . esc_attr( $tax ) . "' id='" . esc_attr( $tax ) . "' class='agentpress-taxonomy'>\n\t";
-			echo '<option value="" ' . selected( '' === $current, true, false ) . '>' . esc_html( $data['labels']['name'] ) . "</option>\n";
+			echo '<option value="" ' . selected( '' === $current, true, false ) . '>' . esc_html( $data['labels']['all_items'] ) . "</option>\n";
 
 			foreach ( (array) $terms as $term ) {
 				echo "\t<option value='" . esc_attr( $term->slug ) . "' " . selected( $current, $term->slug, false ) . '>' . esc_html( $term->name ) . "</option>\n";
