@@ -148,7 +148,7 @@ class EventPress_Pro {
 				'public'        => true,
 				'query_var'     => true,
 				'menu_position' => 6,
-				'menu_icon'     => 'dashicons-admin-home',
+				'menu_icon'     => 'dashicons-calendar-alt',
 				'has_archive'   => true,
 				'show_in_rest'  => true,
 				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
