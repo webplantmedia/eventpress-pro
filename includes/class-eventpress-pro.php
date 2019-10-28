@@ -16,7 +16,7 @@ class EventPress_Pro {
 	 *
 	 * @var string
 	 */
-	public $settings_field = 'agentpress_taxonomies';
+	public $settings_field = 'eventpress_taxonomies';
 
 	/**
 	 * Menu page.
@@ -45,7 +45,7 @@ class EventPress_Pro {
 	public function __construct() {
 
 		$this->property_details = apply_filters(
-			'agentpress_property_details',
+			'eventpress_property_details',
 			array(
 				'col1' => array(
 					__( 'Price:', 'eventpress-pro' ) => '_listing_price',
@@ -65,7 +65,7 @@ class EventPress_Pro {
 		);
 
 		$this->allowed_tags = apply_filters(
-			'agentpress_featured_listings_allowed_html',
+			'eventpress_featured_listings_allowed_html',
 			array(
 				'p'      => array(),
 				'label'  => array(),
@@ -183,12 +183,12 @@ class EventPress_Pro {
 	 */
 	public function metabox_save( $post_id, $post ) {
 
-		if ( ! isset( $_POST['agentpress_details_metabox_nonce'] ) || ! isset( $_POST['ap'] ) ) {
+		if ( ! isset( $_POST['eventpress_details_metabox_nonce'] ) || ! isset( $_POST['ap'] ) ) {
 			return;
 		}
 
 		/** Verify the nonce */
-		if ( ! isset( $_POST['agentpress_details_metabox_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['agentpress_details_metabox_nonce'] ), 'agentpress_details_metabox_save' ) ) {
+		if ( ! isset( $_POST['eventpress_details_metabox_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['eventpress_details_metabox_nonce'] ), 'eventpress_details_metabox_save' ) ) {
 			return;
 		}
 

@@ -14,7 +14,7 @@
  * License: GNU General Public License v2.0 (or later)
  * License URI: https://opensource.org/licenses/gpl-license.php
  *
- * @package agentpress-listing
+ * @package eventpress-listing
  */
 
 register_activation_hook( __FILE__, 'eventpress_pro_activation' );
@@ -77,9 +77,9 @@ function eventpress_pro_activation() {
 	if ( ! post_type_exists( 'listing' ) ) {
 
 			eventpress_pro_init();
-			global $_eventpress_pro, $_agentpress_taxonomies;
+			global $_eventpress_pro, $_eventpress_taxonomies;
 			$_eventpress_pro->create_post_type();
-			$_agentpress_taxonomies->register_taxonomies();
+			$_eventpress_taxonomies->register_taxonomies();
 
 	}
 
@@ -102,7 +102,7 @@ function eventpress_pro_init() {
 		return;
 	}
 
-	global $_eventpress_pro, $_agentpress_taxonomies;
+	global $_eventpress_pro, $_eventpress_taxonomies;
 
 	define( 'APL_URL', plugin_dir_url( __FILE__ ) );
 	define( 'APL_VERSION', '1.3.3' );
@@ -113,15 +113,15 @@ function eventpress_pro_init() {
 	/** Includes */
 	require_once dirname( __FILE__ ) . '/includes/functions.php';
 	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro.php';
-	require_once dirname( __FILE__ ) . '/includes/class-agentpress-taxonomies.php';
-	require_once dirname( __FILE__ ) . '/includes/class-agentpress-featured-listings-widget.php';
+	require_once dirname( __FILE__ ) . '/includes/class-eventpress-taxonomies.php';
+	require_once dirname( __FILE__ ) . '/includes/class-eventpress-featured-listings-widget.php';
 	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro-search-widget.php';
 
 	/** Instantiate */
 	$_eventpress_pro   = new EventPress_Pro();
-	$_agentpress_taxonomies = new AgentPress_Taxonomies();
+	$_eventpress_taxonomies = new EventPress_Taxonomies();
 
-	add_action( 'widgets_init', 'agentpress_register_widgets' );
+	add_action( 'widgets_init', 'eventpress_register_widgets' );
 
 }
 
@@ -130,9 +130,9 @@ function eventpress_pro_init() {
  *
  * @since 0.1.0
  */
-function agentpress_register_widgets() {
+function eventpress_register_widgets() {
 
-	$widgets = array( 'AgentPress_Featured_Listings_Widget', 'EventPress_Pro_Search_Widget' );
+	$widgets = array( 'EventPress_Featured_Listings_Widget', 'EventPress_Pro_Search_Widget' );
 
 	foreach ( (array) $widgets as $widget ) {
 		register_widget( $widget );

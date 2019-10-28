@@ -1,5 +1,5 @@
 {
-	"name": "webplantmedia/agentpress-listing",
+	"name": "webplantmedia/eventpress-listing",
 	"type": "wordpress-plugin",
 	"description": "EventPress Pro is a plugin which adds a Listings custom post type for Real Estate agents.",
 	"homepage": "https://github.com/webplantmedia/eventpress-pro",

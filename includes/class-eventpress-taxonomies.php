@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the AgentPress_Taxonomies class.
+ * This file contains the EventPress_Taxonomies class.
  *
  * @package eventpress-pro
  */
@@ -9,14 +9,14 @@
  * This class handles all the aspects of displaying, creating, and editing the
  * user-created taxonomies for the "Listings" post-type.
  */
-class AgentPress_Taxonomies {
+class EventPress_Taxonomies {
 
 	/**
 	 * Settings field
 	 *
 	 * @var string
 	 */
-	public $settings_field = 'agentpress_taxonomies';
+	public $settings_field = 'eventpress_taxonomies';
 
 	/**
 	 * Menu page.
@@ -69,8 +69,8 @@ class AgentPress_Taxonomies {
 		}
 
 		/** This section handles the data if a new taxonomy is created */
-		if ( isset( $_REQUEST['action'] ) && 'create' === $_REQUEST['action'] && isset( $_POST['agentpress_taxonomy'] ) ) {
-			$this->create_taxonomy( array_map( 'sanitize_text_field', wp_unslash( $_POST['agentpress_taxonomy'] ) ) );
+		if ( isset( $_REQUEST['action'] ) && 'create' === $_REQUEST['action'] && isset( $_POST['eventpress_taxonomy'] ) ) {
+			$this->create_taxonomy( array_map( 'sanitize_text_field', wp_unslash( $_POST['eventpress_taxonomy'] ) ) );
 		}
 
 		/** This section handles the data if a taxonomy is deleted */
@@ -80,7 +80,7 @@ class AgentPress_Taxonomies {
 
 		/** This section handles the data if a taxonomy is being edited */
 		if ( isset( $_REQUEST['action'] ) && 'edit' === $_REQUEST['action'] ) {
-			$this->edit_taxonomy( array_map( 'sanitize_text_field', wp_unslash( $_POST['agentpress_taxonomy'] ) ) );
+			$this->edit_taxonomy( array_map( 'sanitize_text_field', wp_unslash( $_POST['eventpress_taxonomy'] ) ) );
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.NoNonceVerification
 

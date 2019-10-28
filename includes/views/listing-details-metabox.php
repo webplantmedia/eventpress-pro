@@ -5,7 +5,7 @@
  * @package eventpress-pro
  */
 
-wp_nonce_field( 'agentpress_details_metabox_save', 'agentpress_details_metabox_nonce' );
+wp_nonce_field( 'eventpress_details_metabox_save', 'eventpress_details_metabox_nonce' );
 
 echo '<div style="width: 90%; float: left">';
 

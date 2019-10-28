@@ -2,7 +2,7 @@
 /**
  * Edit Taxonomy View.
  *
- * @package agentpress-listing
+ * @package eventpress-listing
  */
 
 $options = get_option( $this->settings_field );
@@ -20,26 +20,26 @@ if ( ! empty( $option_key ) && array_key_exists( $option_key, (array) $options )
 <h2><?php esc_html_e( 'Edit Taxonomy', 'eventpress-pro' ); ?></h2>
 
 <form method="post" action="<?php echo esc_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=edit' ) ); ?>">
-<?php wp_nonce_field( 'agentpress-action_edit-taxonomy' ); ?>
+<?php wp_nonce_field( 'eventpress-action_edit-taxonomy' ); ?>
 <table class="form-table">
 
 	<tr class="form-field">
-		<th scope="row" valign="top"><label for="agentpress_taxonomy[id]"><?php esc_html_e( 'ID', 'eventpress-pro' ); ?></label></th>
+		<th scope="row" valign="top"><label for="eventpress_taxonomy[id]"><?php esc_html_e( 'ID', 'eventpress-pro' ); ?></label></th>
 		<td>
 		<input type="text" value="<?php echo esc_attr( $option_key ); ?>" size="40" disabled="disabled" />
-		<input name="agentpress_taxonomy[id]" id="agentpress_taxonomy[id]" type="hidden" value="<?php echo esc_attr( $option_key ); ?>" size="40" />
+		<input name="eventpress_taxonomy[id]" id="eventpress_taxonomy[id]" type="hidden" value="<?php echo esc_attr( $option_key ); ?>" size="40" />
 		<p class="description"><?php esc_html_e( 'The unique ID is used to register the taxonomy. (cannot be changed)', 'eventpress-pro' ); ?></p></td>
 	</tr>
 
 	<tr class="form-field">
-		<th scope="row" valign="top"><label for="agentpress_taxonomy[name]"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></label></th>
-		<td><input name="agentpress_taxonomy[name]" id="agentpress_taxonomy[name]" type="text" value="<?php echo esc_html( $received_taxonomy['labels']['name'] ); ?>" size="40" />
+		<th scope="row" valign="top"><label for="eventpress_taxonomy[name]"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></label></th>
+		<td><input name="eventpress_taxonomy[name]" id="eventpress_taxonomy[name]" type="text" value="<?php echo esc_html( $received_taxonomy['labels']['name'] ); ?>" size="40" />
 		<p class="description"><?php esc_html_e( 'Example: "Property Types" or "Locations"', 'eventpress-pro' ); ?></p></td>
 	</tr>
 
 	<tr class="form-field">
-		<th scope="row" valign="top"><label for="agentpress_taxonomy[singular_name]"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></label></th>
-		<td><input name="agentpress_taxonomy[singular_name]" id="agentpress_taxonomy[singular_name]" type="text" value="<?php echo esc_html( $received_taxonomy['labels']['singular_name'] ); ?>" size="40" />
+		<th scope="row" valign="top"><label for="eventpress_taxonomy[singular_name]"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></label></th>
+		<td><input name="eventpress_taxonomy[singular_name]" id="eventpress_taxonomy[singular_name]" type="text" value="<?php echo esc_html( $received_taxonomy['labels']['singular_name'] ); ?>" size="40" />
 		<p class="description"><?php esc_html_e( 'Example: "Property Type" or "Location"', 'eventpress-pro' ); ?></p></td>
 	</tr>
 

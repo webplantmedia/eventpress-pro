@@ -24,26 +24,26 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/class-agentpress-featured-listings-widget.php:23
+#: includes/class-eventpress-featured-listings-widget.php:23
 msgid "Display grid-style featured listings"
 msgstr ""
 
-#: includes/class-agentpress-featured-listings-widget.php:31
-msgid "AgentPress - Featured Listings"
+#: includes/class-eventpress-featured-listings-widget.php:31
+msgid "EventPress - Featured Listings"
 msgstr ""
 
-#: includes/class-agentpress-featured-listings-widget.php:125
+#: includes/class-eventpress-featured-listings-widget.php:125
 #: includes/class-eventpress-pro.php:142
 #: includes/class-eventpress-pro.php:143
 msgid "View Listing"
 msgstr ""
 
-#: includes/class-agentpress-featured-listings-widget.php:169
+#: includes/class-eventpress-featured-listings-widget.php:169
 #: includes/class-eventpress-pro-search-widget.php:139
 msgid "Title:"
 msgstr ""
 
-#: includes/class-agentpress-featured-listings-widget.php:171
+#: includes/class-eventpress-featured-listings-widget.php:171
 msgid "How many results should be returned?"
 msgstr ""
 
@@ -180,101 +180,101 @@ msgstr ""
 msgid "Listing Search Results"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:57
+#: includes/class-eventpress-taxonomies.php:57
 msgid "Register Taxonomies"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:118
-#: includes/class-agentpress-taxonomies.php:121
-#: includes/class-agentpress-taxonomies.php:124
-#: includes/class-agentpress-taxonomies.php:236
-#: includes/class-agentpress-taxonomies.php:240
-#: includes/class-agentpress-taxonomies.php:244
+#: includes/class-eventpress-taxonomies.php:118
+#: includes/class-eventpress-taxonomies.php:121
+#: includes/class-eventpress-taxonomies.php:124
+#: includes/class-eventpress-taxonomies.php:236
+#: includes/class-eventpress-taxonomies.php:240
+#: includes/class-eventpress-taxonomies.php:244
 msgid "Please complete all required fields."
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:132
+#: includes/class-eventpress-taxonomies.php:132
 msgid "You have given this taxonomy an invalid slug/ID. Please try again."
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:141
-#: includes/class-agentpress-taxonomies.php:255
-#: includes/class-agentpress-taxonomies.php:341
+#: includes/class-eventpress-taxonomies.php:141
+#: includes/class-eventpress-taxonomies.php:255
+#: includes/class-eventpress-taxonomies.php:341
 #. translators: %s is for name.
 msgid "Search %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:143
-#: includes/class-agentpress-taxonomies.php:257
-#: includes/class-agentpress-taxonomies.php:343
+#: includes/class-eventpress-taxonomies.php:143
+#: includes/class-eventpress-taxonomies.php:257
+#: includes/class-eventpress-taxonomies.php:343
 #. translators: %s is for name.
 msgid "Popular %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:145
-#: includes/class-agentpress-taxonomies.php:259
-#: includes/class-agentpress-taxonomies.php:345
+#: includes/class-eventpress-taxonomies.php:145
+#: includes/class-eventpress-taxonomies.php:259
+#: includes/class-eventpress-taxonomies.php:345
 #. translators: %s is for name.
 msgid "All %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:147
-#: includes/class-agentpress-taxonomies.php:261
-#: includes/class-agentpress-taxonomies.php:347
+#: includes/class-eventpress-taxonomies.php:147
+#: includes/class-eventpress-taxonomies.php:261
+#: includes/class-eventpress-taxonomies.php:347
 #. translators: %s is for singular name.
 msgid "Edit %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:149
-#: includes/class-agentpress-taxonomies.php:263
-#: includes/class-agentpress-taxonomies.php:349
+#: includes/class-eventpress-taxonomies.php:149
+#: includes/class-eventpress-taxonomies.php:263
+#: includes/class-eventpress-taxonomies.php:349
 #. translators: %s is for singular name.
 msgid "Update %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:151
-#: includes/class-agentpress-taxonomies.php:265
-#: includes/class-agentpress-taxonomies.php:351
+#: includes/class-eventpress-taxonomies.php:151
+#: includes/class-eventpress-taxonomies.php:265
+#: includes/class-eventpress-taxonomies.php:351
 #. translators: %s is for singular name.
 msgid "Add New %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:153
-#: includes/class-agentpress-taxonomies.php:267
-#: includes/class-agentpress-taxonomies.php:353
+#: includes/class-eventpress-taxonomies.php:153
+#: includes/class-eventpress-taxonomies.php:267
+#: includes/class-eventpress-taxonomies.php:353
 #. translators: %s is for singular name.
 msgid "New %s Name"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:155
-#: includes/class-agentpress-taxonomies.php:269
-#: includes/class-agentpress-taxonomies.php:355
+#: includes/class-eventpress-taxonomies.php:155
+#: includes/class-eventpress-taxonomies.php:269
+#: includes/class-eventpress-taxonomies.php:355
 #. translators: %s is for name.
 msgid "Add or Remove %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:157
-#: includes/class-agentpress-taxonomies.php:271
-#: includes/class-agentpress-taxonomies.php:357
+#: includes/class-eventpress-taxonomies.php:157
+#: includes/class-eventpress-taxonomies.php:271
+#: includes/class-eventpress-taxonomies.php:357
 #. translators: %s is for name.
 msgid "Choose from the most used %s"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:214
+#: includes/class-eventpress-taxonomies.php:214
 msgid ""
 "Nice try, partner. But that taxonomy doesn't exist. Click back and try "
 "again."
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:306
+#: includes/class-eventpress-taxonomies.php:306
 msgid "New taxonomy successfully created!"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:312
+#: includes/class-eventpress-taxonomies.php:312
 msgid "Taxonomy successfully edited!"
 msgstr ""
 
-#: includes/class-agentpress-taxonomies.php:318
+#: includes/class-eventpress-taxonomies.php:318
 msgid "Taxonomy successfully deleted."
 msgstr ""
 

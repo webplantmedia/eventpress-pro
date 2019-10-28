@@ -1,6 +1,6 @@
 <?php
 /**
- * AgentPress Search Widget.
+ * EventPress Search Widget.
  *
  * @package agenpress-listing
  */
@@ -8,7 +8,7 @@
 /**
  * This widget presents a search widget which uses listings' taxonomy for search fields.
  *
- * @package AgentPress
+ * @package EventPress
  * @since 2.0
  * @author Ron Rennick
  */
@@ -48,9 +48,9 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 			)
 		);
 
-		global $_agentpress_taxonomies;
+		global $_eventpress_taxonomies;
 
-		$listings_taxonomies = $_agentpress_taxonomies->get_taxonomies();
+		$listings_taxonomies = $_eventpress_taxonomies->get_taxonomies();
 
 		$before_widget = $args['before_widget'];
 		$after_widget  = $args['after_widget'];
@@ -70,7 +70,7 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 				continue;
 			}
 
-			$terms = apply_filters( 'agentpress_get_terms', get_terms(
+			$terms = apply_filters( 'eventpress_get_terms', get_terms(
 				$tax,
 				array(
 					'orderby'      => 'name',
@@ -91,7 +91,7 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 				$current = $term->slug;
 			}
 			// $current = ! empty( $wp_query->query_vars[ $tax ] ) ? $wp_query->query_vars[ $tax ] : '';
-			echo "<select name='" . esc_attr( $tax ) . "' id='" . esc_attr( $tax ) . "' class='agentpress-taxonomy'>\n\t";
+			echo "<select name='" . esc_attr( $tax ) . "' id='" . esc_attr( $tax ) . "' class='eventpress-taxonomy'>\n\t";
 			echo '<option value="" ' . selected( '' === $current, true, false ) . '>' . esc_html( $data['labels']['all_items'] ) . "</option>\n";
 
 			foreach ( (array) $terms as $term ) {
@@ -136,9 +136,9 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 			)
 		);
 
-		global $_agentpress_taxonomies;
+		global $_eventpress_taxonomies;
 
-		$listings_taxonomies = $_agentpress_taxonomies->get_taxonomies();
+		$listings_taxonomies = $_eventpress_taxonomies->get_taxonomies();
 
 		$new_widget = empty( $instance );
 

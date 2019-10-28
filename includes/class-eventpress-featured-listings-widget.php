@@ -1,6 +1,6 @@
 <?php
 /**
- * AgentPress Featured Listing Widget.
+ * EventPress Featured Listing Widget.
  *
  * @package eventpress-pro
  */
@@ -8,11 +8,11 @@
 /**
  * This widget presents loop content, based on your input, specifically for the homepage.
  *
- * @package AgentPress
+ * @package EventPress
  * @since 2.0
  * @author Nathan Rice
  */
-class AgentPress_Featured_Listings_Widget extends WP_Widget {
+class EventPress_Featured_Listings_Widget extends WP_Widget {
 
 	/**
 	 * Constructor.
@@ -28,7 +28,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 			'height' => 350,
 		);
 
-		parent::__construct( 'featured-listings', __( 'AgentPress - Featured Listings', 'eventpress-pro' ), $widget_ops, $control_ops );
+		parent::__construct( 'featured-listings', __( 'EventPress - Featured Listings', 'eventpress-pro' ), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -128,7 +128,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 
 					// Wrap in post class div, and output.
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', esc_attr( join( ' ', get_post_class( $toggle ) ) ), apply_filters( 'agentpress_featured_listings_widget_loop', $loop ) );
+					printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', esc_attr( join( ' ', get_post_class( $toggle ) ) ), apply_filters( 'eventpress_featured_listings_widget_loop', $loop ) );
 
 			endwhile;
 		endif;
