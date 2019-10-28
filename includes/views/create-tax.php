@@ -2,7 +2,7 @@
 /**
  * Create taxonomy view.
  *
- * @package eventpress-listing
+ * @package eventpress-pro
  */
 
 ?>

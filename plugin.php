@@ -14,7 +14,7 @@
  * License: GNU General Public License v2.0 (or later)
  * License URI: https://opensource.org/licenses/gpl-license.php
  *
- * @package eventpress-listing
+ * @package eventpress-pro
  */
 
 register_activation_hook( __FILE__, 'eventpress_pro_activation' );

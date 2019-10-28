@@ -2,7 +2,7 @@
 /**
  * Edit Taxonomy View.
  *
- * @package eventpress-listing
+ * @package eventpress-pro
  */
 
 $options = get_option( $this->settings_field );
