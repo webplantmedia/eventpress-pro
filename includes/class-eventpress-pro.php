@@ -150,7 +150,8 @@ class EventPress_Pro {
 				'menu_position' => 6,
 				'menu_icon'     => 'dashicons-admin-home',
 				'has_archive'   => true,
-				'supports'      => array( 'title', 'editor', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
+				'show_in_rest'  => true,
+				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
 				'rewrite'       => array( 'slug' => 'listings' ),
 			)
 		);
