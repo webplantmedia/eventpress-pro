@@ -29,7 +29,7 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 			'id_base' => 'property-search',
 		);
 
-		parent::__construct( 'property-search', __( 'AgentPress - Listing Search', 'eventpress-pro' ), $widget_ops, $control_ops );
+		parent::__construct( 'property-search', __( 'EventPress - Pro Search', 'eventpress-pro' ), $widget_ops, $control_ops );
 	}
 
 	/**

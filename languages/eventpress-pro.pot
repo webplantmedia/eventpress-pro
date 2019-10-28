@@ -52,7 +52,7 @@ msgid "Display property search dropdown"
 msgstr ""
 
 #: includes/class-eventpress-pro-search-widget.php:32
-msgid "AgentPress - Listing Search"
+msgid "EventPress - Pro Search"
 msgstr ""
 
 #: includes/class-eventpress-pro-search-widget.php:47
