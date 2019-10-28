@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: nathanrice, wpmuguru, studiopress, nick_thegeek, marksabbath
+Contributors: nathanrice, wpmuguru, webplantmedia, nick_thegeek, marksabbath
 Tags: real estate, agentpress, genesis, genesiswp
 Requires at least: 4.0.0
 Tested up to: 5.2.2
@@ -9,13 +9,13 @@ This plugin adds a Listings custom post type for Real Estate agents.
 
 == Description ==
 
-The AgentPress Listings plugin uses custom post types, custom taxonomies, and widgets to create a listings management system.
+The EventPress Pro plugin uses custom post types, custom taxonomies, and widgets to create a listings management system.
 
 You can use the taxonomy creation tool to create your own way of classifying listings, and use those taxonomies to allow users to search for listings.
 
 == Installation ==
 
-1. Upload the entire `agentpress-listings` folder to the `/wp-content/plugins/` directory
+1. Upload the entire `eventpress-pro` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Begin creating listings and listing taxonomies.
 

@@ -1,8 +1,8 @@
 <?php
 /**
- * Holds miscellaneous functions for use in the AgentPress Listings plugin
+ * Holds miscellaneous functions for use in the EventPress Pro plugin
  *
- * @package agentpress-listings
+ * @package eventpress-pro
  */
 
 /**

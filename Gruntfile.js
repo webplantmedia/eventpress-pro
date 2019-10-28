@@ -70,9 +70,9 @@ module.exports = function(grunt) {
 				options: {
 					domainPath: '/languages',
 					processPot: function( pot ) {
-						pot.headers['report-msgid-bugs-to']   = 'StudioPress <translations@studiopress.com>';
-						pot.headers['last-translator']        = 'StudioPress <translations@studiopress.com>';
-						pot.headers['language-team']          = 'English <translations@studiopress.com>';
+						pot.headers['report-msgid-bugs-to']   = 'Web Plant Media <translations@webplantmedia.com>';
+						pot.headers['last-translator']        = 'Web Plant Media <translations@webplantmedia.com>';
+						pot.headers['language-team']          = 'English <translations@webplantmedia.com>';
 						pot.headers['plural-forms']           = 'nplurals=2; plural=n != 1;';
 						pot.headers['x-generator']            = 'grunt-wp-i18n 0.4.4';
 						pot.headers['x-poedit-basepath']      = '.';

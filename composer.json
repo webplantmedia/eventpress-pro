@@ -1,8 +1,8 @@
 {
-	"name": "studiopress/agentpress-listing",
+	"name": "webplantmedia/agentpress-listing",
 	"type": "wordpress-plugin",
-	"description": "AgentPress Listings is a plugin which adds a Listings custom post type for Real Estate agents.",
-	"homepage": "https://github.com/studiopress/agentpress-listings",
+	"description": "EventPress Pro is a plugin which adds a Listings custom post type for Real Estate agents.",
+	"homepage": "https://github.com/webplantmedia/eventpress-pro",
 	"license": "GPL-2.0-or-later",
 	"require": {
 		"php": "^5.3 || ^7",
@@ -26,7 +26,7 @@
 		"phpcbf": "phpcbf --standard=WordPress --ignore=vendor/,node_modules/,assets/ --extensions=php -p ./"
 	},
 	"support": {
-		"issues": "https://github.com/studiopress/agentpress-listings/issues",
-		"source": "https://github.com/studiopress/agentpress-listings"
+		"issues": "https://github.com/webplantmedia/eventpress-pro/issues",
+		"source": "https://github.com/webplantmedia/eventpress-pro"
 	}
 }

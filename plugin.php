@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: AgentPress Listings
- * Plugin URI: https://www.studiopress.com/
- * Description: AgentPress Listings is a plugin which adds a Listings custom post type for Real Estate agents.
- * Author: StudioPress
- * Author URI: https://www.studiopress.com/
+ * Plugin Name: EventPress Pro
+ * Plugin URI: https://webplantmedia.com/
+ * Description: EventPress Pro is a plugin which adds a Listings custom post type for Real Estate agents.
+ * Author: Web Plant Media
+ * Author URI: https://webplantmedia.com/
  *
  * Version: 1.3.3
  *
- * Text Domain: agentpress-listings
+ * Text Domain: eventpress-pro
  * Domain Path: /languages/
  *
  * License: GNU General Public License v2.0 (or later)
@@ -17,7 +17,7 @@
  * @package agentpress-listing
  */
 
-register_activation_hook( __FILE__, 'agentpress_listings_activation' );
+register_activation_hook( __FILE__, 'eventpress_pro_activation' );
 
 /**
  * This function runs on plugin activation. It checks to make sure the required
@@ -25,7 +25,7 @@ register_activation_hook( __FILE__, 'agentpress_listings_activation' );
  *
  * @since 0.1.0
  */
-function agentpress_listings_activation() {
+function eventpress_pro_activation() {
 
 	$latest = '2.0.2';
 
@@ -37,14 +37,14 @@ function agentpress_listings_activation() {
 			sprintf(
 				wp_kses(
 					// translators: %1$s is the link.
-					__( 'Sorry, you can\'t activate unless you have installed <a href="%1$s">Genesis</a>', 'agentpress-listings' ),
+					__( 'Sorry, you can\'t activate unless you have installed <a href="%1$s">Genesis</a>', 'eventpress-pro' ),
 					array(
 						'a' => array(
 							'href' => array(),
 						),
 					)
 				),
-				'http://my.studiopress.com/themes/genesis/'
+				'http://webplantmedia.com/themes/genesis/'
 			)
 		);
 
@@ -59,14 +59,14 @@ function agentpress_listings_activation() {
 			sprintf(
 				wp_kses(
 					// translators: %1$s is the link and %2$s is the version.
-					__( 'Sorry, you cannot activate without <a href="%1$s">Genesis %2$s</a> or greater', 'agentpress-listings' ),
+					__( 'Sorry, you cannot activate without <a href="%1$s">Genesis %2$s</a> or greater', 'eventpress-pro' ),
 					array(
 						'a' => array(
 							'href' => array(),
 						),
 					)
 				),
-				'http://www.studiopress.com/support/showthread.php?t=19576',
+				'http://webplantmedia.com/support/showthread.php?t=19576',
 				esc_html( $latest )
 			)
 		);
@@ -76,9 +76,9 @@ function agentpress_listings_activation() {
 	/** Flush rewrite rules */
 	if ( ! post_type_exists( 'listing' ) ) {
 
-			agentpress_listings_init();
-			global $_agentpress_listings, $_agentpress_taxonomies;
-			$_agentpress_listings->create_post_type();
+			eventpress_pro_init();
+			global $_eventpress_pro, $_agentpress_taxonomies;
+			$_eventpress_pro->create_post_type();
 			$_agentpress_taxonomies->register_taxonomies();
 
 	}
@@ -87,38 +87,38 @@ function agentpress_listings_activation() {
 
 }
 
-add_action( 'after_setup_theme', 'agentpress_listings_init' );
+add_action( 'after_setup_theme', 'eventpress_pro_init' );
 /**
- * Initialize AgentPress Listings.
+ * Initialize EventPress Pro.
  *
  * Include the libraries, define global variables, instantiate the classes.
  *
  * @since 0.1.0
  */
-function agentpress_listings_init() {
+function eventpress_pro_init() {
 
 	/** Do nothing if a Genesis child theme isn't active */
 	if ( ! function_exists( 'genesis_get_option' ) ) {
 		return;
 	}
 
-	global $_agentpress_listings, $_agentpress_taxonomies;
+	global $_eventpress_pro, $_agentpress_taxonomies;
 
 	define( 'APL_URL', plugin_dir_url( __FILE__ ) );
 	define( 'APL_VERSION', '1.3.3' );
 
 	/** Load textdomain for translation */
-	load_plugin_textdomain( 'agentpress-listings', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+	load_plugin_textdomain( 'eventpress-pro', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 	/** Includes */
 	require_once dirname( __FILE__ ) . '/includes/functions.php';
-	require_once dirname( __FILE__ ) . '/includes/class-agentpress-listings.php';
+	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro.php';
 	require_once dirname( __FILE__ ) . '/includes/class-agentpress-taxonomies.php';
 	require_once dirname( __FILE__ ) . '/includes/class-agentpress-featured-listings-widget.php';
-	require_once dirname( __FILE__ ) . '/includes/class-agentpress-listings-search-widget.php';
+	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro-search-widget.php';
 
 	/** Instantiate */
-	$_agentpress_listings   = new AgentPress_Listings();
+	$_eventpress_pro   = new AgentPress_Listings();
 	$_agentpress_taxonomies = new AgentPress_Taxonomies();
 
 	add_action( 'widgets_init', 'agentpress_register_widgets' );
@@ -126,7 +126,7 @@ function agentpress_listings_init() {
 }
 
 /**
- * Register Widgets that will be used in the AgentPress Listings plugin
+ * Register Widgets that will be used in the EventPress Pro plugin
  *
  * @since 0.1.0
  */

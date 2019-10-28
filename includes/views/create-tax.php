@@ -7,28 +7,28 @@
 
 ?>
 
-<h2><?php esc_html_e( 'Listing Taxonomies', 'agentpress-listings' ); ?></h2>
+<h2><?php esc_html_e( 'Listing Taxonomies', 'eventpress-pro' ); ?></h2>
 
 <div id="col-container">
 
 	<div id="col-right">
 	<div class="col-wrap">
 
-		<h3><?php esc_html_e( 'Current Listing Taxonomies', 'agentpress-listings' ); ?></h3>
+		<h3><?php esc_html_e( 'Current Listing Taxonomies', 'eventpress-pro' ); ?></h3>
 		<table class="widefat tag fixed" cellspacing="0">
 			<thead>
 			<tr>
-			<th scope="col" class="manage-column column-slug"><?php esc_html_e( 'ID', 'agentpress-listings' ); ?></th>
-			<th scope="col" class="manage-column column-singular-name"><?php esc_html_e( 'Singular Name', 'agentpress-listings' ); ?></th>
-			<th scope="col" class="manage-column column-plural-name"><?php esc_html_e( 'Plural Name', 'agentpress-listings' ); ?></th>
+			<th scope="col" class="manage-column column-slug"><?php esc_html_e( 'ID', 'eventpress-pro' ); ?></th>
+			<th scope="col" class="manage-column column-singular-name"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></th>
+			<th scope="col" class="manage-column column-plural-name"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></th>
 			</tr>
 			</thead>
 
 			<tfoot>
 			<tr>
-			<th scope="col" class="manage-column column-slug"><?php esc_html_e( 'ID', 'agentpress-listings' ); ?></th>
-			<th scope="col" class="manage-column column-singular-name"><?php esc_html_e( 'Singular Name', 'agentpress-listings' ); ?></th>
-			<th scope="col" class="manage-column column-plural-name"><?php esc_html_e( 'Plural Name', 'agentpress-listings' ); ?></th>
+			<th scope="col" class="manage-column column-slug"><?php esc_html_e( 'ID', 'eventpress-pro' ); ?></th>
+			<th scope="col" class="manage-column column-singular-name"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></th>
+			<th scope="col" class="manage-column column-plural-name"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></th>
 			</tr>
 			</tfoot>
 
@@ -61,8 +61,8 @@
 						<br />
 
 						<div class="row-actions">
-							<span class="edit"><a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;view=edit&amp;id=' . esc_html( $tax_id ) ) ); ?>"><?php esc_html_e( 'Edit', 'agentpress-listings' ); ?></a> | </span>
-							<span class="delete"><a class="delete-tag" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=delete&amp;id=' . esc_html( $tax_id ) ) ), 'agentpress-action_delete-taxonomy' ); ?>"><?php esc_html_e( 'Delete', 'agentpress-listings' ); ?></a></span>
+							<span class="edit"><a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;view=edit&amp;id=' . esc_html( $tax_id ) ) ); ?>"><?php esc_html_e( 'Edit', 'eventpress-pro' ); ?></a> | </span>
+							<span class="delete"><a class="delete-tag" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=delete&amp;id=' . esc_html( $tax_id ) ) ), 'agentpress-action_delete-taxonomy' ); ?>"><?php esc_html_e( 'Delete', 'eventpress-pro' ); ?></a></span>
 						</div>
 					<?php endif; ?>
 
@@ -83,30 +83,30 @@
 	<div class="col-wrap">
 
 		<div class="form-wrap">
-			<h3><?php esc_html_e( 'Add New Listing Taxonomy', 'agentpress-listings' ); ?></h3>
+			<h3><?php esc_html_e( 'Add New Listing Taxonomy', 'eventpress-pro' ); ?></h3>
 
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin.php?page=register-taxonomies&amp;action=create' ) ); ?>">
 			<?php wp_nonce_field( 'agentpress-action_create-taxonomy' ); ?>
 
 			<div class="form-field">
-				<label for="taxonomy-id"><?php esc_html_e( 'ID', 'agentpress-listings' ); ?></label>
+				<label for="taxonomy-id"><?php esc_html_e( 'ID', 'eventpress-pro' ); ?></label>
 				<input name="agentpress_taxonomy[id]" id="taxonomy-id" type="text" value="" size="40" />
-				<p><?php esc_html_e( 'The unique ID is used to register the taxonomy. (no spaces, underscores, or special characters)', 'agentpress-listings' ); ?></p>
+				<p><?php esc_html_e( 'The unique ID is used to register the taxonomy. (no spaces, underscores, or special characters)', 'eventpress-pro' ); ?></p>
 			</div>
 
 			<div class="form-field form-required">
-				<label for="taxonomy-name"><?php esc_html_e( 'Plural Name', 'agentpress-listings' ); ?></label>
+				<label for="taxonomy-name"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></label>
 				<input name="agentpress_taxonomy[name]" id="taxonomy-name" type="text" value="" size="40" />
-				<p><?php esc_html_e( 'Example: "Property Types" or "Locations"', 'agentpress-listings' ); ?></p>
+				<p><?php esc_html_e( 'Example: "Property Types" or "Locations"', 'eventpress-pro' ); ?></p>
 			</div>
 
 			<div class="form-field form-required">
-				<label for="taxonomy-singular-name"><?php esc_html_e( 'Singular Name', 'agentpress-listings' ); ?></label>
+				<label for="taxonomy-singular-name"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></label>
 				<input name="agentpress_taxonomy[singular_name]" id="taxonomy-singular-name" type="text" value="" size="40" />
-				<p><?php esc_html_e( 'Example: "Property Type" or "Location"', 'agentpress-listings' ); ?></p>
+				<p><?php esc_html_e( 'Example: "Property Type" or "Location"', 'eventpress-pro' ); ?></p>
 			</div>
 
-			<?php submit_button( __( 'Add New Taxonomy', 'agentpress-listings' ), 'secondary' ); ?>
+			<?php submit_button( __( 'Add New Taxonomy', 'eventpress-pro' ), 'secondary' ); ?>
 			</form>
 		</div>
 

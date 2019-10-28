@@ -2,7 +2,7 @@
 /**
  * This file contains the AgentPress_Listings class.
  *
- * @package agentpress-listings
+ * @package eventpress-pro
  */
 
 /**
@@ -48,18 +48,18 @@ class AgentPress_Listings {
 			'agentpress_property_details',
 			array(
 				'col1' => array(
-					__( 'Price:', 'agentpress-listings' ) => '_listing_price',
-					__( 'Address:', 'agentpress-listings' ) => '_listing_address',
-					__( 'City:', 'agentpress-listings' )  => '_listing_city',
-					__( 'State:', 'agentpress-listings' ) => '_listing_state',
-					__( 'ZIP:', 'agentpress-listings' )   => '_listing_zip',
+					__( 'Price:', 'eventpress-pro' ) => '_listing_price',
+					__( 'Address:', 'eventpress-pro' ) => '_listing_address',
+					__( 'City:', 'eventpress-pro' )  => '_listing_city',
+					__( 'State:', 'eventpress-pro' ) => '_listing_state',
+					__( 'ZIP:', 'eventpress-pro' )   => '_listing_zip',
 				),
 				'col2' => array(
-					__( 'MLS #:', 'agentpress-listings' ) => '_listing_mls',
-					__( 'Square Feet:', 'agentpress-listings' ) => '_listing_sqft',
-					__( 'Bedrooms:', 'agentpress-listings' ) => '_listing_bedrooms',
-					__( 'Bathrooms:', 'agentpress-listings' ) => '_listing_bathrooms',
-					__( 'Basement:', 'agentpress-listings' ) => '_listing_basement',
+					__( 'MLS #:', 'eventpress-pro' ) => '_listing_mls',
+					__( 'Square Feet:', 'eventpress-pro' ) => '_listing_sqft',
+					__( 'Bedrooms:', 'eventpress-pro' ) => '_listing_bedrooms',
+					__( 'Bathrooms:', 'eventpress-pro' ) => '_listing_bathrooms',
+					__( 'Basement:', 'eventpress-pro' ) => '_listing_basement',
 				),
 			)
 		);
@@ -129,21 +129,21 @@ class AgentPress_Listings {
 	public function create_post_type() {
 
 		$args = apply_filters(
-			'agentpress_listings_post_type_args',
+			'eventpress_pro_post_type_args',
 			array(
 				'labels'        => array(
-					'name'               => __( 'Listings', 'agentpress-listings' ),
-					'singular_name'      => __( 'Listing', 'agentpress-listings' ),
-					'add_new'            => __( 'Add New', 'agentpress-listings' ),
-					'add_new_item'       => __( 'Add New Listing', 'agentpress-listings' ),
-					'edit'               => __( 'Edit', 'agentpress-listings' ),
-					'edit_item'          => __( 'Edit Listing', 'agentpress-listings' ),
-					'new_item'           => __( 'New Listing', 'agentpress-listings' ),
-					'view'               => __( 'View Listing', 'agentpress-listings' ),
-					'view_item'          => __( 'View Listing', 'agentpress-listings' ),
-					'search_items'       => __( 'Search Listings', 'agentpress-listings' ),
-					'not_found'          => __( 'No listings found', 'agentpress-listings' ),
-					'not_found_in_trash' => __( 'No listings found in Trash', 'agentpress-listings' ),
+					'name'               => __( 'Listings', 'eventpress-pro' ),
+					'singular_name'      => __( 'Listing', 'eventpress-pro' ),
+					'add_new'            => __( 'Add New', 'eventpress-pro' ),
+					'add_new_item'       => __( 'Add New Listing', 'eventpress-pro' ),
+					'edit'               => __( 'Edit', 'eventpress-pro' ),
+					'edit_item'          => __( 'Edit Listing', 'eventpress-pro' ),
+					'new_item'           => __( 'New Listing', 'eventpress-pro' ),
+					'view'               => __( 'View Listing', 'eventpress-pro' ),
+					'view_item'          => __( 'View Listing', 'eventpress-pro' ),
+					'search_items'       => __( 'Search Listings', 'eventpress-pro' ),
+					'not_found'          => __( 'No listings found', 'eventpress-pro' ),
+					'not_found_in_trash' => __( 'No listings found in Trash', 'eventpress-pro' ),
 				),
 				'public'        => true,
 				'query_var'     => true,
@@ -164,7 +164,7 @@ class AgentPress_Listings {
 	 */
 	public function register_meta_boxes() {
 
-		add_meta_box( 'listing_details_metabox', __( 'Property Details', 'agentpress-listings' ), array( &$this, 'listing_details_metabox' ), 'listing', 'normal', 'high' );
+		add_meta_box( 'listing_details_metabox', __( 'Property Details', 'eventpress-pro' ), array( &$this, 'listing_details_metabox' ), 'listing', 'normal', 'high' );
 
 	}
 
@@ -247,11 +247,11 @@ class AgentPress_Listings {
 
 		$columns = array(
 			'cb'                 => '<input type="checkbox" />',
-			'listing_thumbnail'  => __( 'Thumbnail', 'agentpress-listings' ),
-			'title'              => __( 'Listing Title', 'agentpress-listings' ),
-			'listing_details'    => __( 'Details', 'agentpress-listings' ),
-			'listing_features'   => __( 'Features', 'agentpress-listings' ),
-			'listing_categories' => __( 'Categories', 'agentpress-listings' ),
+			'listing_thumbnail'  => __( 'Thumbnail', 'eventpress-pro' ),
+			'title'              => __( 'Listing Title', 'eventpress-pro' ),
+			'listing_details'    => __( 'Details', 'eventpress-pro' ),
+			'listing_features'   => __( 'Features', 'eventpress-pro' ),
+			'listing_categories' => __( 'Categories', 'eventpress-pro' ),
 		);
 
 		return $columns;
@@ -329,7 +329,7 @@ class AgentPress_Listings {
 		}
 
 		$output .= '</div><div class="clear">';
-		$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'agentpress-listings' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
+		$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'eventpress-pro' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
 
 		$output .= '</div>';
 
@@ -405,7 +405,7 @@ class AgentPress_Listings {
 
 		array_pop( $crumbs );
 
-		$crumbs[] = __( 'Listing Search Results', 'agentpress-listings' );
+		$crumbs[] = __( 'Listing Search Results', 'eventpress-pro' );
 
 		return $crumbs;
 

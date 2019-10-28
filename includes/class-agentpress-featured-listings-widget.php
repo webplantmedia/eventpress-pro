@@ -2,7 +2,7 @@
 /**
  * AgentPress Featured Listing Widget.
  *
- * @package agentpress-listings
+ * @package eventpress-pro
  */
 
 /**
@@ -20,7 +20,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname'   => 'featured-listings',
-			'description' => __( 'Display grid-style featured listings', 'agentpress-listings' ),
+			'description' => __( 'Display grid-style featured listings', 'eventpress-pro' ),
 		);
 
 		$control_ops = array(
@@ -28,7 +28,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 			'height' => 350,
 		);
 
-		parent::__construct( 'featured-listings', __( 'AgentPress - Featured Listings', 'agentpress-listings' ), $widget_ops, $control_ops );
+		parent::__construct( 'featured-listings', __( 'AgentPress - Featured Listings', 'eventpress-pro' ), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -122,7 +122,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 
 					}
 
-					$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Listing', 'agentpress-listings' ) );
+					$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Listing', 'eventpress-pro' ) );
 
 					$toggle = ( 'left' === $toggle ) ? 'right' : 'left';
 
@@ -166,9 +166,9 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 			)
 		);
 
-		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', esc_attr( $this->get_field_id( 'title' ) ), esc_html__( 'Title:', 'agentpress-listings' ), esc_attr( $this->get_field_id( 'title' ) ), esc_attr( $this->get_field_name( 'title' ) ), esc_attr( $instance['title'] ), 'width: 95%;' );
+		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', esc_attr( $this->get_field_id( 'title' ) ), esc_html__( 'Title:', 'eventpress-pro' ), esc_attr( $this->get_field_id( 'title' ) ), esc_attr( $this->get_field_name( 'title' ) ), esc_attr( $instance['title'] ), 'width: 95%;' );
 
-		printf( '<p>%s <input type="text" name="%s" value="%s" size="3" /></p>', esc_html__( 'How many results should be returned?', 'agentpress-listings' ), esc_attr( $this->get_field_name( 'posts_per_page' ) ), esc_attr( $instance['posts_per_page'] ) );
+		printf( '<p>%s <input type="text" name="%s" value="%s" size="3" /></p>', esc_html__( 'How many results should be returned?', 'eventpress-pro' ), esc_attr( $this->get_field_name( 'posts_per_page' ) ), esc_attr( $instance['posts_per_page'] ) );
 
 	}
 }

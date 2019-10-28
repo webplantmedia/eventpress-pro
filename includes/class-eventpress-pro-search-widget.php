@@ -20,7 +20,7 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname'   => 'property-search',
-			'description' => __( 'Display property search dropdown', 'agentpress-listings' ),
+			'description' => __( 'Display property search dropdown', 'eventpress-pro' ),
 		);
 
 		$control_ops = array(
@@ -29,7 +29,7 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 			'id_base' => 'property-search',
 		);
 
-		parent::__construct( 'property-search', __( 'AgentPress - Listing Search', 'agentpress-listings' ), $widget_ops, $control_ops );
+		parent::__construct( 'property-search', __( 'AgentPress - Listing Search', 'eventpress-pro' ), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 			(array) $instance,
 			array(
 				'title'       => '',
-				'button_text' => __( 'Search Properties', 'agentpress-listings' ),
+				'button_text' => __( 'Search Properties', 'eventpress-pro' ),
 			)
 		);
 
@@ -132,7 +132,7 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 			(array) $instance,
 			array(
 				'title'       => '',
-				'button_text' => __( 'Search Properties', 'agentpress-listings' ),
+				'button_text' => __( 'Search Properties', 'eventpress-pro' ),
 			)
 		);
 
@@ -142,9 +142,9 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 
 		$new_widget = empty( $instance );
 
-		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', esc_attr( $this->get_field_id( 'title' ) ), esc_html__( 'Title:', 'agentpress-listings' ), esc_attr( $this->get_field_id( 'title' ) ), esc_attr( $this->get_field_name( 'title' ) ), esc_attr( $instance['title'] ), 'width: 95%;' );
+		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', esc_attr( $this->get_field_id( 'title' ) ), esc_html__( 'Title:', 'eventpress-pro' ), esc_attr( $this->get_field_id( 'title' ) ), esc_attr( $this->get_field_name( 'title' ) ), esc_attr( $instance['title'] ), 'width: 95%;' );
 		?>
-		<h5><?php esc_html_e( 'Include these taxonomies in the search widget', 'agentpress-listings' ); ?></h5>
+		<h5><?php esc_html_e( 'Include these taxonomies in the search widget', 'eventpress-pro' ); ?></h5>
 		<?php
 		foreach ( (array) $listings_taxonomies as $tax => $data ) {
 
@@ -159,6 +159,6 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 
 		}
 
-		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', esc_attr( $this->get_field_id( 'button_text' ) ), esc_html__( 'Button Text:', 'agentpress-listings' ), esc_attr( $this->get_field_id( 'button_text' ) ), esc_attr( $this->get_field_name( 'button_text' ) ), esc_attr( $instance['button_text'] ), 'width: 95%;' );
+		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', esc_attr( $this->get_field_id( 'button_text' ) ), esc_html__( 'Button Text:', 'eventpress-pro' ), esc_attr( $this->get_field_id( 'button_text' ) ), esc_attr( $this->get_field_name( 'button_text' ) ), esc_attr( $instance['button_text'] ), 'width: 95%;' );
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * This file contains the AgentPress_Taxonomies class.
  *
- * @package agentpress-listings
+ * @package eventpress-pro
  */
 
 /**
@@ -54,7 +54,7 @@ class AgentPress_Taxonomies {
 	 */
 	public function settings_init() {
 
-		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'agentpress-listings' ), __( 'Register Taxonomies', 'agentpress-listings' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
+		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'eventpress-pro' ), __( 'Register Taxonomies', 'eventpress-pro' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
 
 	}
 
@@ -115,13 +115,13 @@ class AgentPress_Taxonomies {
 
 		/** No empty fields */
 		if ( ! isset( $args['id'] ) || empty( $args['id'] ) ) {
-			wp_die( esc_html__( 'Please complete all required fields.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'Please complete all required fields.', 'eventpress-pro' ) );
 		}
 		if ( ! isset( $args['name'] ) || empty( $args['name'] ) ) {
-			wp_die( esc_html__( 'Please complete all required fields.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'Please complete all required fields.', 'eventpress-pro' ) );
 		}
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) ) {
-			wp_die( esc_html__( 'Please complete all required fields.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'Please complete all required fields.', 'eventpress-pro' ) );
 		}
 
 		// Sanitize id.
@@ -129,7 +129,7 @@ class AgentPress_Taxonomies {
 
 		// Bail, if not a valid ID after sanitization.
 		if ( ! $sanitized_id || is_numeric( $sanitized_id ) ) {
-			wp_die( esc_html__( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'eventpress-pro' ) );
 		}
 
 		$labels = array(
@@ -138,23 +138,23 @@ class AgentPress_Taxonomies {
 			'menu_name'             => wp_strip_all_tags( $args['name'] ),
 
 			// translators: %s is for name.
-			'search_items'          => sprintf( esc_html__( 'Search %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'search_items'          => sprintf( esc_html__( 'Search %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for name.
-			'popular_items'         => sprintf( esc_html__( 'Popular %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'popular_items'         => sprintf( esc_html__( 'Popular %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for name.
-			'all_items'             => sprintf( esc_html__( 'All %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'all_items'             => sprintf( esc_html__( 'All %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for singular name.
-			'edit_item'             => sprintf( esc_html__( 'Edit %s', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'edit_item'             => sprintf( esc_html__( 'Edit %s', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for singular name.
-			'update_item'           => sprintf( esc_html__( 'Update %s', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'update_item'           => sprintf( esc_html__( 'Update %s', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for singular name.
-			'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for singular name.
-			'new_item_name'         => sprintf( esc_html__( 'New %s Name', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'new_item_name'         => sprintf( esc_html__( 'New %s Name', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for name.
-			'add_or_remove_items'   => sprintf( esc_html__( 'Add or Remove %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'add_or_remove_items'   => sprintf( esc_html__( 'Add or Remove %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for name.
-			'choose_from_most_used' => sprintf( esc_html__( 'Choose from the most used %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'choose_from_most_used' => sprintf( esc_html__( 'Choose from the most used %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 		);
 
 		$args = array(
@@ -212,7 +212,7 @@ class AgentPress_Taxonomies {
 		if ( array_key_exists( $id, (array) $options ) ) {
 			unset( $options[ $id ] );
 		} else {
-			wp_die( esc_html__( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'agentpress-listings' ) );
+			wp_die( esc_html__( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'eventpress-pro' ) );
 		}
 
 		/** Update the DB */
@@ -234,15 +234,15 @@ class AgentPress_Taxonomies {
 
 		/** No empty fields */
 		if ( ! isset( $args['id'] ) || empty( $args['id'] ) ) {
-			wp_die( esc_html__( 'Please complete all required fields.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'Please complete all required fields.', 'eventpress-pro' ) );
 		}
 
 		if ( ! isset( $args['name'] ) || empty( $args['name'] ) ) {
-			wp_die( esc_html__( 'Please complete all required fields.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'Please complete all required fields.', 'eventpress-pro' ) );
 		}
 
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) ) {
-			wp_die( esc_html__( 'Please complete all required fields.', 'agentpress-listings' ) );
+			wp_die( esc_html__( 'Please complete all required fields.', 'eventpress-pro' ) );
 		}
 
 		$id = $args['id'];
@@ -253,23 +253,23 @@ class AgentPress_Taxonomies {
 			'menu_name'             => wp_strip_all_tags( $args['name'] ),
 
 			// translators: %s is for name.
-			'search_items'          => sprintf( esc_html__( 'Search %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'search_items'          => sprintf( esc_html__( 'Search %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for name.
-			'popular_items'         => sprintf( esc_html__( 'Popular %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'popular_items'         => sprintf( esc_html__( 'Popular %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for name.
-			'all_items'             => sprintf( esc_html__( 'All %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'all_items'             => sprintf( esc_html__( 'All %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for singular name.
-			'edit_item'             => sprintf( esc_html__( 'Edit %s', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'edit_item'             => sprintf( esc_html__( 'Edit %s', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for singular name.
-			'update_item'           => sprintf( esc_html__( 'Update %s', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'update_item'           => sprintf( esc_html__( 'Update %s', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for singular name.
-			'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for singular name.
-			'new_item_name'         => sprintf( esc_html__( 'New %s Name', 'agentpress-listings' ), wp_strip_all_tags( $args['singular_name'] ) ),
+			'new_item_name'         => sprintf( esc_html__( 'New %s Name', 'eventpress-pro' ), wp_strip_all_tags( $args['singular_name'] ) ),
 			// translators: %s is for name.
-			'add_or_remove_items'   => sprintf( esc_html__( 'Add or Remove %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'add_or_remove_items'   => sprintf( esc_html__( 'Add or Remove %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 			// translators: %s is for name.
-			'choose_from_most_used' => sprintf( esc_html__( 'Choose from the most used %s', 'agentpress-listings' ), wp_strip_all_tags( $args['name'] ) ),
+			'choose_from_most_used' => sprintf( esc_html__( 'Choose from the most used %s', 'eventpress-pro' ), wp_strip_all_tags( $args['name'] ) ),
 		);
 
 		$args = array(
@@ -305,19 +305,19 @@ class AgentPress_Taxonomies {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification
 		if ( isset( $_REQUEST['created'] ) && 'true' === $_REQUEST['created'] ) {
-			printf( wp_kses_post( $format ), esc_html__( 'New taxonomy successfully created!', 'agentpress-listings' ) );
+			printf( wp_kses_post( $format ), esc_html__( 'New taxonomy successfully created!', 'eventpress-pro' ) );
 			return;
 		}
 
 		// phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification
 		if ( isset( $_REQUEST['edited'] ) && 'true' === $_REQUEST['edited'] ) {
-			printf( wp_kses_post( $format ), esc_html__( 'Taxonomy successfully edited!', 'agentpress-listings' ) );
+			printf( wp_kses_post( $format ), esc_html__( 'Taxonomy successfully edited!', 'eventpress-pro' ) );
 			return;
 		}
 
 		// phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification
 		if ( isset( $_REQUEST['deleted'] ) && 'true' === $_REQUEST['deleted'] ) {
-			printf( wp_kses_post( $format ), esc_html__( 'Taxonomy successfully deleted.', 'agentpress-listings' ) );
+			printf( wp_kses_post( $format ), esc_html__( 'Taxonomy successfully deleted.', 'eventpress-pro' ) );
 			return;
 		}
 	}
@@ -340,23 +340,23 @@ class AgentPress_Taxonomies {
 						'menu_name'             => wp_strip_all_tags( $name ),
 
 						// translators: %s is for name.
-						'search_items'          => sprintf( esc_html__( 'Search %s', 'agentpress-listings' ), wp_strip_all_tags( $name ) ),
+						'search_items'          => sprintf( esc_html__( 'Search %s', 'eventpress-pro' ), wp_strip_all_tags( $name ) ),
 						// translators: %s is for name.
-						'popular_items'         => sprintf( esc_html__( 'Popular %s', 'agentpress-listings' ), wp_strip_all_tags( $name ) ),
+						'popular_items'         => sprintf( esc_html__( 'Popular %s', 'eventpress-pro' ), wp_strip_all_tags( $name ) ),
 						// translators: %s is for name.
-						'all_items'             => sprintf( esc_html__( 'All %s', 'agentpress-listings' ), wp_strip_all_tags( $name ) ),
+						'all_items'             => sprintf( esc_html__( 'All %s', 'eventpress-pro' ), wp_strip_all_tags( $name ) ),
 						// translators: %s is for singular name.
-						'edit_item'             => sprintf( esc_html__( 'Edit %s', 'agentpress-listings' ), wp_strip_all_tags( $singular_name ) ),
+						'edit_item'             => sprintf( esc_html__( 'Edit %s', 'eventpress-pro' ), wp_strip_all_tags( $singular_name ) ),
 						// translators: %s is for singular name.
-						'update_item'           => sprintf( esc_html__( 'Update %s', 'agentpress-listings' ), wp_strip_all_tags( $singular_name ) ),
+						'update_item'           => sprintf( esc_html__( 'Update %s', 'eventpress-pro' ), wp_strip_all_tags( $singular_name ) ),
 						// translators: %s is for singular name.
-						'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'agentpress-listings' ), wp_strip_all_tags( $singular_name ) ),
+						'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'eventpress-pro' ), wp_strip_all_tags( $singular_name ) ),
 						// translators: %s is for singular name.
-						'new_item_name'         => sprintf( esc_html__( 'New %s Name', 'agentpress-listings' ), wp_strip_all_tags( $singular_name ) ),
+						'new_item_name'         => sprintf( esc_html__( 'New %s Name', 'eventpress-pro' ), wp_strip_all_tags( $singular_name ) ),
 						// translators: %s is for name.
-						'add_or_remove_items'   => sprintf( esc_html__( 'Add or Remove %s', 'agentpress-listings' ), wp_strip_all_tags( $name ) ),
+						'add_or_remove_items'   => sprintf( esc_html__( 'Add or Remove %s', 'eventpress-pro' ), wp_strip_all_tags( $name ) ),
 						// translators: %s is for name.
-						'choose_from_most_used' => sprintf( esc_html__( 'Choose from the most used %s', 'agentpress-listings' ), wp_strip_all_tags( $name ) ),
+						'choose_from_most_used' => sprintf( esc_html__( 'Choose from the most used %s', 'eventpress-pro' ), wp_strip_all_tags( $name ) ),
 					),
 				'hierarchical' => 0,
 				'rewrite'      => array(
