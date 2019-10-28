@@ -7,7 +7,7 @@
 
 /**
  * This class handles all the aspects of displaying, creating, and editing the
- * user-created taxonomies for the "Listings" post-type.
+ * user-created taxonomies for the "Events" post-type.
  */
 class EventPress_Taxonomies {
 
@@ -54,7 +54,7 @@ class EventPress_Taxonomies {
 	 */
 	public function settings_init() {
 
-		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'eventpress-pro' ), __( 'Register Taxonomies', 'eventpress-pro' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
+		add_submenu_page( 'edit.php?post_type=event', __( 'Register Taxonomies', 'eventpress-pro' ), __( 'Register Taxonomies', 'eventpress-pro' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
 
 	}
 
@@ -375,7 +375,7 @@ class EventPress_Taxonomies {
 	public function register_taxonomies() {
 
 		foreach ( (array) $this->get_taxonomies() as $id => $data ) {
-			register_taxonomy( $id, array( 'listing' ), $data );
+			register_taxonomy( $id, array( 'event' ), $data );
 		}
 
 	}

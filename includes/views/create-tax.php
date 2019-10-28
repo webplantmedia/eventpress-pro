@@ -7,14 +7,14 @@
 
 ?>
 
-<h2><?php esc_html_e( 'Listing Taxonomies', 'eventpress-pro' ); ?></h2>
+<h2><?php esc_html_e( 'Event Taxonomies', 'eventpress-pro' ); ?></h2>
 
 <div id="col-container">
 
 	<div id="col-right">
 	<div class="col-wrap">
 
-		<h3><?php esc_html_e( 'Current Listing Taxonomies', 'eventpress-pro' ); ?></h3>
+		<h3><?php esc_html_e( 'Current Event Taxonomies', 'eventpress-pro' ); ?></h3>
 		<table class="widefat tag fixed" cellspacing="0">
 			<thead>
 			<tr>
@@ -37,9 +37,9 @@
 				<?php
 				$alt = true;
 
-				$listing_taxonomies = array_merge( $this->property_features_taxonomy(), get_option( $this->settings_field ) );
+				$event_taxonomies = array_merge( $this->property_features_taxonomy(), get_option( $this->settings_field ) );
 
-				foreach ( (array) $listing_taxonomies as $tax_id => $data ) :
+				foreach ( (array) $event_taxonomies as $tax_id => $data ) :
 					?>
 
 				<tr
@@ -83,7 +83,7 @@
 	<div class="col-wrap">
 
 		<div class="form-wrap">
-			<h3><?php esc_html_e( 'Add New Listing Taxonomy', 'eventpress-pro' ); ?></h3>
+			<h3><?php esc_html_e( 'Add New Event Taxonomy', 'eventpress-pro' ); ?></h3>
 
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin.php?page=register-taxonomies&amp;action=create' ) ); ?>">
 			<?php wp_nonce_field( 'eventpress-action_create-taxonomy' ); ?>

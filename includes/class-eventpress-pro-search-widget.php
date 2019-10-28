@@ -2,11 +2,11 @@
 /**
  * EventPress Search Widget.
  *
- * @package agenpress-listing
+ * @package agenpress-event
  */
 
 /**
- * This widget presents a search widget which uses listings' taxonomy for search fields.
+ * This widget presents a search widget which uses events' taxonomy for search fields.
  *
  * @package EventPress
  * @since 2.0
@@ -50,7 +50,7 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 
 		global $_eventpress_taxonomies;
 
-		$listings_taxonomies = $_eventpress_taxonomies->get_taxonomies();
+		$events_taxonomies = $_eventpress_taxonomies->get_taxonomies();
 
 		$before_widget = $args['before_widget'];
 		$after_widget  = $args['after_widget'];
@@ -63,9 +63,9 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 			echo wp_kses_post( $before_title . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $after_title );
 		}
 
-		echo '<form role="search" method="get" id="searchform" action="' . esc_attr( home_url( '/' ) ) . '" ><input type="hidden" value="" name="s" /><input type="hidden" value="listing" name="post_type" />';
+		echo '<form role="search" method="get" id="searchform" action="' . esc_attr( home_url( '/' ) ) . '" ><input type="hidden" value="" name="s" /><input type="hidden" value="event" name="post_type" />';
 
-		foreach ( $listings_taxonomies as $tax => $data ) {
+		foreach ( $events_taxonomies as $tax => $data ) {
 			if ( ! isset( $instance[ $tax ] ) || ! $instance[ $tax ] ) {
 				continue;
 			}
@@ -138,7 +138,7 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 
 		global $_eventpress_taxonomies;
 
-		$listings_taxonomies = $_eventpress_taxonomies->get_taxonomies();
+		$events_taxonomies = $_eventpress_taxonomies->get_taxonomies();
 
 		$new_widget = empty( $instance );
 
@@ -146,7 +146,7 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 		?>
 		<h5><?php esc_html_e( 'Include these taxonomies in the search widget', 'eventpress-pro' ); ?></h5>
 		<?php
-		foreach ( (array) $listings_taxonomies as $tax => $data ) {
+		foreach ( (array) $events_taxonomies as $tax => $data ) {
 
 			$terms = get_terms( $tax );
 			if ( empty( $terms ) ) {

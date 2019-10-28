@@ -24,26 +24,26 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/class-eventpress-featured-listings-widget.php:23
-msgid "Display grid-style featured listings"
+#: includes/class-eventpress-featured-events-widget.php:23
+msgid "Display grid-style featured events"
 msgstr ""
 
-#: includes/class-eventpress-featured-listings-widget.php:31
-msgid "EventPress - Featured Listings"
+#: includes/class-eventpress-featured-events-widget.php:31
+msgid "EventPress - Featured Events"
 msgstr ""
 
-#: includes/class-eventpress-featured-listings-widget.php:125
+#: includes/class-eventpress-featured-events-widget.php:125
 #: includes/class-eventpress-pro.php:142
 #: includes/class-eventpress-pro.php:143
-msgid "View Listing"
+msgid "View Event"
 msgstr ""
 
-#: includes/class-eventpress-featured-listings-widget.php:169
+#: includes/class-eventpress-featured-events-widget.php:169
 #: includes/class-eventpress-pro-search-widget.php:139
 msgid "Title:"
 msgstr ""
 
-#: includes/class-eventpress-featured-listings-widget.php:171
+#: includes/class-eventpress-featured-events-widget.php:171
 msgid "How many results should be returned?"
 msgstr ""
 
@@ -109,11 +109,11 @@ msgid "Basement:"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:135
-msgid "Listings"
+msgid "Events"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:136
-msgid "Listing"
+msgid "Event"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:137
@@ -121,7 +121,7 @@ msgid "Add New"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:138
-msgid "Add New Listing"
+msgid "Add New Event"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:139 includes/views/create-tax.php:64
@@ -129,23 +129,23 @@ msgid "Edit"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:140
-msgid "Edit Listing"
+msgid "Edit Event"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:141
-msgid "New Listing"
+msgid "New Event"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:144
-msgid "Search Listings"
+msgid "Search Events"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:145
-msgid "No listings found"
+msgid "No events found"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:146
-msgid "No listings found in Trash"
+msgid "No events found in Trash"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:167
@@ -157,7 +157,7 @@ msgid "Thumbnail"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:251
-msgid "Listing Title"
+msgid "Event Title"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:252
@@ -177,7 +177,7 @@ msgid "Additional Features:"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:408
-msgid "Listing Search Results"
+msgid "Event Search Results"
 msgstr ""
 
 #: includes/class-eventpress-taxonomies.php:57
@@ -279,11 +279,11 @@ msgid "Taxonomy successfully deleted."
 msgstr ""
 
 #: includes/views/create-tax.php:10
-msgid "Listing Taxonomies"
+msgid "Event Taxonomies"
 msgstr ""
 
 #: includes/views/create-tax.php:17
-msgid "Current Listing Taxonomies"
+msgid "Current Event Taxonomies"
 msgstr ""
 
 #: includes/views/create-tax.php:21 includes/views/create-tax.php:29
@@ -306,7 +306,7 @@ msgid "Delete"
 msgstr ""
 
 #: includes/views/create-tax.php:86
-msgid "Add New Listing Taxonomy"
+msgid "Add New Event Taxonomy"
 msgstr ""
 
 #: includes/views/create-tax.php:94
@@ -345,25 +345,25 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: includes/views/listing-details-metabox.php:12
+#: includes/views/event-details-metabox.php:12
 msgid "Custom Text: "
 msgstr ""
 
-#: includes/views/listing-details-metabox.php:13
-msgid "Custom text shows on the featured listings widget image."
+#: includes/views/event-details-metabox.php:13
+msgid "Custom text shows on the featured events widget image."
 msgstr ""
 
-#: includes/views/listing-details-metabox.php:24
-#: includes/views/listing-details-metabox.php:40
-#: includes/views/listing-details-metabox.php:48
+#: includes/views/event-details-metabox.php:24
+#: includes/views/event-details-metabox.php:40
+#: includes/views/event-details-metabox.php:48
 msgid "Send to text editor"
 msgstr ""
 
-#: includes/views/listing-details-metabox.php:38
+#: includes/views/event-details-metabox.php:38
 msgid "Enter Map Embed Code:"
 msgstr ""
 
-#: includes/views/listing-details-metabox.php:46
+#: includes/views/event-details-metabox.php:46
 msgid "Enter Video Embed Code"
 msgstr ""
 
@@ -391,7 +391,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"EventPress Pro is a plugin which adds a Listings custom post type for "
+"EventPress Pro is a plugin which adds a Events custom post type for "
 "Real Estate agents."
 msgstr ""
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EventPress Pro
  * Plugin URI: https://webplantmedia.com/
- * Description: EventPress Pro is a plugin which adds a Listings custom post type for Real Estate agents.
+ * Description: EventPress Pro is a plugin which adds a Events custom post type for Real Estate agents.
  * Author: Web Plant Media
  * Author URI: https://webplantmedia.com/
  *
@@ -74,7 +74,7 @@ function eventpress_pro_activation() {
 	}
 
 	/** Flush rewrite rules */
-	if ( ! post_type_exists( 'listing' ) ) {
+	if ( ! post_type_exists( 'event' ) ) {
 
 			eventpress_pro_init();
 			global $_eventpress_pro, $_eventpress_taxonomies;
@@ -114,7 +114,7 @@ function eventpress_pro_init() {
 	require_once dirname( __FILE__ ) . '/includes/functions.php';
 	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro.php';
 	require_once dirname( __FILE__ ) . '/includes/class-eventpress-taxonomies.php';
-	require_once dirname( __FILE__ ) . '/includes/class-eventpress-featured-listings-widget.php';
+	require_once dirname( __FILE__ ) . '/includes/class-eventpress-featured-events-widget.php';
 	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro-search-widget.php';
 
 	/** Instantiate */
@@ -132,7 +132,7 @@ function eventpress_pro_init() {
  */
 function eventpress_register_widgets() {
 
-	$widgets = array( 'EventPress_Featured_Listings_Widget', 'EventPress_Pro_Search_Widget' );
+	$widgets = array( 'EventPress_Featured_Events_Widget', 'EventPress_Pro_Search_Widget' );
 
 	foreach ( (array) $widgets as $widget ) {
 		register_widget( $widget );

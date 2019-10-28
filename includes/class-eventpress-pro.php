@@ -6,8 +6,8 @@
  */
 
 /**
- * This class handles the creation of the "Listings" post type, and creates a
- * UI to display the Listing-specific data on the admin screens.
+ * This class handles the creation of the "Events" post type, and creates a
+ * UI to display the Event-specific data on the admin screens.
  */
 class EventPress_Pro {
 
@@ -48,24 +48,24 @@ class EventPress_Pro {
 			'eventpress_property_details',
 			array(
 				'col1' => array(
-					__( 'Price:', 'eventpress-pro' ) => '_listing_price',
-					__( 'Address:', 'eventpress-pro' ) => '_listing_address',
-					__( 'City:', 'eventpress-pro' )  => '_listing_city',
-					__( 'State:', 'eventpress-pro' ) => '_listing_state',
-					__( 'ZIP:', 'eventpress-pro' )   => '_listing_zip',
+					__( 'Price:', 'eventpress-pro' ) => '_event_price',
+					__( 'Address:', 'eventpress-pro' ) => '_event_address',
+					__( 'City:', 'eventpress-pro' )  => '_event_city',
+					__( 'State:', 'eventpress-pro' ) => '_event_state',
+					__( 'ZIP:', 'eventpress-pro' )   => '_event_zip',
 				),
 				'col2' => array(
-					__( 'MLS #:', 'eventpress-pro' ) => '_listing_mls',
-					__( 'Square Feet:', 'eventpress-pro' ) => '_listing_sqft',
-					__( 'Bedrooms:', 'eventpress-pro' ) => '_listing_bedrooms',
-					__( 'Bathrooms:', 'eventpress-pro' ) => '_listing_bathrooms',
-					__( 'Basement:', 'eventpress-pro' ) => '_listing_basement',
+					__( 'MLS #:', 'eventpress-pro' ) => '_event_mls',
+					__( 'Square Feet:', 'eventpress-pro' ) => '_event_sqft',
+					__( 'Bedrooms:', 'eventpress-pro' ) => '_event_bedrooms',
+					__( 'Bathrooms:', 'eventpress-pro' ) => '_event_bathrooms',
+					__( 'Basement:', 'eventpress-pro' ) => '_event_basement',
 				),
 			)
 		);
 
 		$this->allowed_tags = apply_filters(
-			'eventpress_featured_listings_allowed_html',
+			'eventpress_featured_events_allowed_html',
 			array(
 				'p'      => array(),
 				'label'  => array(),
@@ -105,7 +105,7 @@ class EventPress_Pro {
 
 		add_action( 'init', array( $this, 'create_post_type' ) );
 
-		add_filter( 'manage_edit-listing_columns', array( $this, 'columns_filter' ) );
+		add_filter( 'manage_edit-event_columns', array( $this, 'columns_filter' ) );
 		add_action( 'manage_posts_custom_column', array( $this, 'columns_data' ) );
 
 		add_action( 'admin_menu', array( $this, 'register_meta_boxes' ), 5 );
@@ -124,7 +124,7 @@ class EventPress_Pro {
 	}
 
 	/**
-	 * Creates our "Listing" post type.
+	 * Creates our "Event" post type.
 	 */
 	public function create_post_type() {
 
@@ -132,18 +132,18 @@ class EventPress_Pro {
 			'eventpress_pro_post_type_args',
 			array(
 				'labels'        => array(
-					'name'               => __( 'Listings', 'eventpress-pro' ),
-					'singular_name'      => __( 'Listing', 'eventpress-pro' ),
+					'name'               => __( 'Events', 'eventpress-pro' ),
+					'singular_name'      => __( 'Event', 'eventpress-pro' ),
 					'add_new'            => __( 'Add New', 'eventpress-pro' ),
-					'add_new_item'       => __( 'Add New Listing', 'eventpress-pro' ),
+					'add_new_item'       => __( 'Add New Event', 'eventpress-pro' ),
 					'edit'               => __( 'Edit', 'eventpress-pro' ),
-					'edit_item'          => __( 'Edit Listing', 'eventpress-pro' ),
-					'new_item'           => __( 'New Listing', 'eventpress-pro' ),
-					'view'               => __( 'View Listing', 'eventpress-pro' ),
-					'view_item'          => __( 'View Listing', 'eventpress-pro' ),
-					'search_items'       => __( 'Search Listings', 'eventpress-pro' ),
-					'not_found'          => __( 'No listings found', 'eventpress-pro' ),
-					'not_found_in_trash' => __( 'No listings found in Trash', 'eventpress-pro' ),
+					'edit_item'          => __( 'Edit Event', 'eventpress-pro' ),
+					'new_item'           => __( 'New Event', 'eventpress-pro' ),
+					'view'               => __( 'View Event', 'eventpress-pro' ),
+					'view_item'          => __( 'View Event', 'eventpress-pro' ),
+					'search_items'       => __( 'Search Events', 'eventpress-pro' ),
+					'not_found'          => __( 'No events found', 'eventpress-pro' ),
+					'not_found_in_trash' => __( 'No events found in Trash', 'eventpress-pro' ),
 				),
 				'public'        => true,
 				'query_var'     => true,
@@ -152,11 +152,11 @@ class EventPress_Pro {
 				'has_archive'   => true,
 				'show_in_rest'  => true,
 				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
-				'rewrite'       => array( 'slug' => 'listings' ),
+				'rewrite'       => array( 'slug' => 'events' ),
 			)
 		);
 
-		register_post_type( 'listing', $args );
+		register_post_type( 'event', $args );
 
 	}
 
@@ -165,15 +165,15 @@ class EventPress_Pro {
 	 */
 	public function register_meta_boxes() {
 
-		add_meta_box( 'listing_details_metabox', __( 'Property Details', 'eventpress-pro' ), array( &$this, 'listing_details_metabox' ), 'listing', 'normal', 'high' );
+		add_meta_box( 'event_details_metabox', __( 'Property Details', 'eventpress-pro' ), array( &$this, 'event_details_metabox' ), 'event', 'normal', 'high' );
 
 	}
 
 	/**
 	 * Includes the metabox details view file.
 	 */
-	public function listing_details_metabox() {
-		include dirname( __FILE__ ) . '/views/listing-details-metabox.php';
+	public function event_details_metabox() {
+		include dirname( __FILE__ ) . '/views/event-details-metabox.php';
 	}
 
 	/**
@@ -193,8 +193,8 @@ class EventPress_Pro {
 			return;
 		}
 
-		/** Run only on listings post type save */
-		if ( 'listing' !== $post->post_type ) {
+		/** Run only on events post type save */
+		if ( 'event' !== $post->post_type ) {
 			return;
 		}
 
@@ -231,16 +231,16 @@ class EventPress_Pro {
 		}
 
 		// Extra check for price that can create a sortable value.
-		if ( isset( $property_details[0]['_listing_price'] ) && ! empty( $property_details[0]['_listing_price'] ) ) {
-			$price_sortable = preg_replace( '/[^0-9\.]/', '', $property_details[0]['_listing_price'] );
-			update_post_meta( $post_id, '_listing_price_sortable', floatval( $price_sortable ) );
+		if ( isset( $property_details[0]['_event_price'] ) && ! empty( $property_details[0]['_event_price'] ) ) {
+			$price_sortable = preg_replace( '/[^0-9\.]/', '', $property_details[0]['_event_price'] );
+			update_post_meta( $post_id, '_event_price_sortable', floatval( $price_sortable ) );
 		} else {
-			delete_post_meta( $post_id, '_listing_price_sortable' );
+			delete_post_meta( $post_id, '_event_price_sortable' );
 		}
 	}
 
 	/**
-	 * Filter the columns in the "Listings" screen, define our own.
+	 * Filter the columns in the "Events" screen, define our own.
 	 *
 	 * @param array $columns Columns.
 	 */
@@ -248,11 +248,11 @@ class EventPress_Pro {
 
 		$columns = array(
 			'cb'                 => '<input type="checkbox" />',
-			'listing_thumbnail'  => __( 'Thumbnail', 'eventpress-pro' ),
-			'title'              => __( 'Listing Title', 'eventpress-pro' ),
-			'listing_details'    => __( 'Details', 'eventpress-pro' ),
-			'listing_features'   => __( 'Features', 'eventpress-pro' ),
-			'listing_categories' => __( 'Categories', 'eventpress-pro' ),
+			'event_thumbnail'  => __( 'Thumbnail', 'eventpress-pro' ),
+			'title'              => __( 'Event Title', 'eventpress-pro' ),
+			'event_details'    => __( 'Details', 'eventpress-pro' ),
+			'event_features'   => __( 'Features', 'eventpress-pro' ),
+			'event_categories' => __( 'Categories', 'eventpress-pro' ),
 		);
 
 		return $columns;
@@ -260,7 +260,7 @@ class EventPress_Pro {
 	}
 
 	/**
-	 * Filter the data that shows up in the columns in the "Listings" screen, define our own.
+	 * Filter the data that shows up in the columns in the "Events" screen, define our own.
 	 *
 	 * @param string $column Columns.
 	 */
@@ -281,10 +281,10 @@ class EventPress_Pro {
 		);
 
 		switch ( $column ) {
-			case 'listing_thumbnail':
+			case 'event_thumbnail':
 				printf( '<p>%s</p>', wp_kses( genesis_get_image( array( 'size' => 'thumbnail' ) ), $allowed_tags ) );
 				break;
-			case 'listing_details':
+			case 'event_details':
 				foreach ( (array) $this->property_details['col1'] as $label => $key ) {
 					printf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 				}
@@ -292,10 +292,10 @@ class EventPress_Pro {
 					printf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 				}
 				break;
-			case 'listing_features':
+			case 'event_features':
 				echo get_the_term_list( $post->ID, 'features', '', ', ', '' );
 				break;
-			case 'listing_categories':
+			case 'event_categories':
 				foreach ( (array) get_option( $this->settings_field ) as $key => $data ) {
 					printf( '<b>%s:</b> %s<br />', esc_html( $data['labels']['singular_name'] ), get_the_term_list( $post->ID, $key, '', ', ', '' ) );
 				}
@@ -345,7 +345,7 @@ class EventPress_Pro {
 	 */
 	public function property_map_shortcode( $atts ) {
 
-		return genesis_get_custom_field( '_listing_map' );
+		return genesis_get_custom_field( '_event_map' );
 
 	}
 
@@ -356,7 +356,7 @@ class EventPress_Pro {
 	 */
 	public function property_video_shortcode( $atts ) {
 
-		return genesis_get_custom_field( '_listing_video' );
+		return genesis_get_custom_field( '_event_video' );
 
 	}
 
@@ -378,13 +378,13 @@ class EventPress_Pro {
 
 		$post_type = get_query_var( 'post_type' );
 
-		if ( is_array( $post_type ) || 'listing' !== $post_type ) {
+		if ( is_array( $post_type ) || 'event' !== $post_type ) {
 			return $template;
 		}
 
-		$listing_template = locate_template( array( 'archive-listing.php' ), false );
+		$event_template = locate_template( array( 'archive-event.php' ), false );
 
-		return $listing_template ? $listing_template : $template;
+		return $event_template ? $event_template : $template;
 
 	}
 
@@ -400,13 +400,13 @@ class EventPress_Pro {
 
 		$post_type = get_query_var( 'post_type' );
 
-		if ( is_array( $post_type ) || 'listing' !== $post_type ) {
+		if ( is_array( $post_type ) || 'event' !== $post_type ) {
 			return $crumbs;
 		}
 
 		array_pop( $crumbs );
 
-		$crumbs[] = __( 'Listing Search Results', 'eventpress-pro' );
+		$crumbs[] = __( 'Event Search Results', 'eventpress-pro' );
 
 		return $crumbs;
 

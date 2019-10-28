@@ -1,6 +1,6 @@
 <?php
 /**
- * EventPress Featured Listing Widget.
+ * EventPress Featured Event Widget.
  *
  * @package eventpress-pro
  */
@@ -12,15 +12,15 @@
  * @since 2.0
  * @author Nathan Rice
  */
-class EventPress_Featured_Listings_Widget extends WP_Widget {
+class EventPress_Featured_Events_Widget extends WP_Widget {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname'   => 'featured-listings',
-			'description' => __( 'Display grid-style featured listings', 'eventpress-pro' ),
+			'classname'   => 'featured-events',
+			'description' => __( 'Display grid-style featured events', 'eventpress-pro' ),
 		);
 
 		$control_ops = array(
@@ -28,7 +28,7 @@ class EventPress_Featured_Listings_Widget extends WP_Widget {
 			'height' => 350,
 		);
 
-		parent::__construct( 'featured-listings', __( 'EventPress - Featured Listings', 'eventpress-pro' ), $widget_ops, $control_ops );
+		parent::__construct( 'featured-events', __( 'EventPress - Featured Events', 'eventpress-pro' ), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -64,7 +64,7 @@ class EventPress_Featured_Listings_Widget extends WP_Widget {
 			$toggle = ''; /** For left/right class. */
 
 			$query_args = array(
-				'post_type'      => 'listing',
+				'post_type'      => 'event',
 				'posts_per_page' => $instance['posts_per_page'],
 				'paged'          => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1,
 			);
@@ -78,26 +78,26 @@ class EventPress_Featured_Listings_Widget extends WP_Widget {
 					// Initialze the $loop variable.
 					$loop = '';
 
-					// Pull all the listing information.
-					$custom_text = genesis_get_custom_field( '_listing_text' );
-					$price       = genesis_get_custom_field( '_listing_price' );
-					$address     = genesis_get_custom_field( '_listing_address' );
-					$city        = genesis_get_custom_field( '_listing_city' );
-					$state       = genesis_get_custom_field( '_listing_state' );
-					$zip         = genesis_get_custom_field( '_listing_zip' );
+					// Pull all the event information.
+					$custom_text = genesis_get_custom_field( '_event_text' );
+					$price       = genesis_get_custom_field( '_event_price' );
+					$address     = genesis_get_custom_field( '_event_address' );
+					$city        = genesis_get_custom_field( '_event_city' );
+					$state       = genesis_get_custom_field( '_event_state' );
+					$zip         = genesis_get_custom_field( '_event_zip' );
 
 					$loop .= sprintf( '<a href="%s">%s</a>', get_permalink(), genesis_get_image( array( 'size' => 'properties' ) ) );
 
 					if ( $price ) {
-						$loop .= sprintf( '<span class="listing-price">%s</span>', $price );
+						$loop .= sprintf( '<span class="event-price">%s</span>', $price );
 					}
 
 					if ( strlen( $custom_text ) ) {
-						$loop .= sprintf( '<span class="listing-text">%s</span>', esc_html( $custom_text ) );
+						$loop .= sprintf( '<span class="event-text">%s</span>', esc_html( $custom_text ) );
 					}
 
 					if ( $address ) {
-						$loop .= sprintf( '<span class="listing-address">%s</span>', $address );
+						$loop .= sprintf( '<span class="event-address">%s</span>', $address );
 					}
 
 					if ( $city || $state || $zip ) {
@@ -118,17 +118,17 @@ class EventPress_Featured_Listings_Widget extends WP_Widget {
 							$city_state_zip = $city . ' ' . $state . ', ' . $zip;
 						}
 
-						$loop .= sprintf( '<span class="listing-city-state-zip">%s</span>', trim( $city_state_zip ) );
+						$loop .= sprintf( '<span class="event-city-state-zip">%s</span>', trim( $city_state_zip ) );
 
 					}
 
-					$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Listing', 'eventpress-pro' ) );
+					$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Event', 'eventpress-pro' ) );
 
 					$toggle = ( 'left' === $toggle ) ? 'right' : 'left';
 
 					// Wrap in post class div, and output.
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', esc_attr( join( ' ', get_post_class( $toggle ) ) ), apply_filters( 'eventpress_featured_listings_widget_loop', $loop ) );
+					printf( '<div class="%s"><div class="widget-wrap"><div class="event-wrap">%s</div></div></div>', esc_attr( join( ' ', get_post_class( $toggle ) ) ), apply_filters( 'eventpress_featured_events_widget_loop', $loop ) );
 
 			endwhile;
 		endif;
