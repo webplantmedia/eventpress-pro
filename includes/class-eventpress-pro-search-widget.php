@@ -12,7 +12,7 @@
  * @since 2.0
  * @author Ron Rennick
  */
-class AgentPress_Listings_Search_Widget extends WP_Widget {
+class EventPress_Pro_Search_Widget extends WP_Widget {
 
 	/**
 	 * Constructor.

@@ -118,7 +118,7 @@ function eventpress_pro_init() {
 	require_once dirname( __FILE__ ) . '/includes/class-eventpress-pro-search-widget.php';
 
 	/** Instantiate */
-	$_eventpress_pro   = new AgentPress_Listings();
+	$_eventpress_pro   = new EventPress_Pro();
 	$_agentpress_taxonomies = new AgentPress_Taxonomies();
 
 	add_action( 'widgets_init', 'agentpress_register_widgets' );
@@ -132,7 +132,7 @@ function eventpress_pro_init() {
  */
 function agentpress_register_widgets() {
 
-	$widgets = array( 'AgentPress_Featured_Listings_Widget', 'AgentPress_Listings_Search_Widget' );
+	$widgets = array( 'AgentPress_Featured_Listings_Widget', 'EventPress_Pro_Search_Widget' );
 
 	foreach ( (array) $widgets as $widget ) {
 		register_widget( $widget );

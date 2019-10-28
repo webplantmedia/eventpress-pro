@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the AgentPress_Listings class.
+ * This file contains the EventPress_Pro class.
  *
  * @package eventpress-pro
  */
@@ -9,7 +9,7 @@
  * This class handles the creation of the "Listings" post type, and creates a
  * UI to display the Listing-specific data on the admin screens.
  */
-class AgentPress_Listings {
+class EventPress_Pro {
 
 	/**
 	 * Settings field.
