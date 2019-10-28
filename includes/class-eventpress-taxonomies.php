@@ -177,7 +177,7 @@ class EventPress_Taxonomies {
 		flush_rewrite_rules();
 
 		/** Redirect with notice */
-		apl_admin_redirect( 'register-taxonomies', array( 'created' => 'true' ) );
+		epp_admin_redirect( 'register-taxonomies', array( 'created' => 'true' ) );
 		exit;
 
 	}
@@ -218,7 +218,7 @@ class EventPress_Taxonomies {
 		/** Update the DB */
 		update_option( $this->settings_field, $options );
 
-		apl_admin_redirect( 'register-taxonomies', array( 'deleted' => 'true' ) );
+		epp_admin_redirect( 'register-taxonomies', array( 'deleted' => 'true' ) );
 		exit;
 
 	}
@@ -286,7 +286,7 @@ class EventPress_Taxonomies {
 
 		update_option( $this->settings_field, wp_parse_args( $tax, $options ) );
 
-		apl_admin_redirect( 'register-taxonomies', array( 'edited' => 'true' ) );
+		epp_admin_redirect( 'register-taxonomies', array( 'edited' => 'true' ) );
 		exit;
 
 	}

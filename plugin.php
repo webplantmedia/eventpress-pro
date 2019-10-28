@@ -104,8 +104,8 @@ function eventpress_pro_init() {
 
 	global $_eventpress_pro, $_eventpress_taxonomies;
 
-	define( 'APL_URL', plugin_dir_url( __FILE__ ) );
-	define( 'APL_VERSION', '1.3.3' );
+	define( 'EPP_URL', plugin_dir_url( __FILE__ ) );
+	define( 'EPP_VERSION', '1.3.3' );
 
 	/** Load textdomain for translation */
 	load_plugin_textdomain( 'eventpress-pro', false, basename( dirname( __FILE__ ) ) . '/languages/' );

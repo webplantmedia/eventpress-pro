@@ -15,7 +15,7 @@
  * @param array $page Page.
  * @param array $query_args Query Arguments.
  */
-function apl_admin_redirect( $page, $query_args = array() ) {
+function epp_admin_redirect( $page, $query_args = array() ) {
 
 	if ( ! $page ) {
 		return;

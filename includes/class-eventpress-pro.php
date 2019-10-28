@@ -364,7 +364,7 @@ class EventPress_Pro {
 	 */
 	public function admin_js() {
 
-		wp_enqueue_script( 'accesspress-admin-js', APL_URL . 'includes/js/admin.js', array(), APL_VERSION, true );
+		wp_enqueue_script( 'accesspress-admin-js', EPP_URL . 'includes/js/admin.js', array(), EPP_VERSION, true );
 
 	}
 
