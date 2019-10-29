@@ -11,16 +11,16 @@ $pattern = '<p><label>%s<br /><input type="text" name="ap[%s]" value="%s" /></la
 
 echo '<div style="width: 45%; float: left">';
 
-foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+foreach ( (array) $this->event_details['col1'] as $label => $key ) {
 	printf( wp_kses( $pattern, $this->allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
 }
-	printf( '<p><code>%s</code></p>', '[property_details]' );
+	printf( '<p><code>%s</code></p>', '[event_details]' );
 
 echo '</div>';
 
 echo '<div style="width: 45%; float: left;">';
 
-foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+foreach ( (array) $this->event_details['col2'] as $label => $key ) {
 	printf( wp_kses( $pattern, $this->allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
 }
 

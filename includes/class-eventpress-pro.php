@@ -30,7 +30,7 @@ class EventPress_Pro {
 	 *
 	 * @var array
 	 */
-	public $property_details;
+	public $event_details;
 
 	/**
 	 * Allowed tags.
@@ -44,8 +44,8 @@ class EventPress_Pro {
 	 */
 	public function __construct() {
 
-		$this->property_details = apply_filters(
-			'eventpress_property_details',
+		$this->event_details = apply_filters(
+			'eventpress_event_details',
 			array(
 				'col1' => array(
 					__( 'Building:', 'eventpress-pro' ) => '_event_building',
@@ -108,7 +108,7 @@ class EventPress_Pro {
 		add_action( 'admin_menu', array( $this, 'register_meta_boxes' ), 5 );
 		add_action( 'save_post', array( $this, 'metabox_save' ), 1, 2 );
 
-		add_shortcode( 'property_details', array( $this, 'property_details_shortcode' ) );
+		add_shortcode( 'event_details', array( $this, 'event_details_shortcode' ) );
 		add_shortcode( 'property_map', array( $this, 'property_map_shortcode' ) );
 		add_shortcode( 'property_video', array( $this, 'property_video_shortcode' ) );
 
@@ -214,10 +214,10 @@ class EventPress_Pro {
 		}
 
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$property_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), array( $this->allowed_tags ) );
+		$event_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), array( $this->allowed_tags ) );
 
 		/** Store the custom fields */
-		foreach ( (array) $property_details[0] as $key => $value ) {
+		foreach ( (array) $event_details[0] as $key => $value ) {
 
 			/** Save/Update/Delete */
 			if ( $value ) {
@@ -274,10 +274,10 @@ class EventPress_Pro {
 				printf( '<p>%s</p>', wp_kses( genesis_get_image( array( 'size' => 'thumbnail' ) ), $allowed_tags ) );
 				break;
 			case 'event_details':
-				foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+				foreach ( (array) $this->event_details['col1'] as $label => $key ) {
 					printf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 				}
-				foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+				foreach ( (array) $this->event_details['col2'] as $label => $key ) {
 					printf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 				}
 				break;
@@ -298,7 +298,7 @@ class EventPress_Pro {
 	 *
 	 * @param  array $atts Attributes.
 	 */
-	public function property_details_shortcode( $atts ) {
+	public function event_details_shortcode( $atts ) {
 
 		global $post;
 
@@ -308,13 +308,13 @@ class EventPress_Pro {
 
 		$output .= '<div class="property-details-col1 one-half first">';
 
-		foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+		foreach ( (array) $this->event_details['col1'] as $label => $key ) {
 			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 		}
 
 		$output .= '</div><div class="property-details-col2 one-half">';
 
-		foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+		foreach ( (array) $this->event_details['col2'] as $label => $key ) {
 			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 		}
 
