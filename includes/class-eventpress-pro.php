@@ -110,6 +110,7 @@ class EventPress_Pro {
 		add_action( 'save_post', array( $this, 'metabox_save' ), 1, 2 );
 
 		add_shortcode( 'event_details', array( $this, 'event_details_shortcode' ) );
+		add_shortcode( 'event_posts', array( $this, 'event_posts_shortcode' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_js' ) );
 
@@ -295,6 +296,115 @@ class EventPress_Pro {
 				break;
 		}
 
+	}
+
+	/**
+	 * Shortcode.
+	 *
+	 * @param  array $atts Attributes.
+	 */
+	public function event_posts_shortcode( $atts ) {
+		global $post;
+
+		$atts = shortcode_atts(
+			array(
+				'posts_per_page' => 12,
+				'class' => 'alignfull',
+				'taxonomy' => '',
+				'terms' => '',
+			), $atts, 'event_posts'
+		);
+
+		if ( ! empty( $atts['taxonomy'] ) && ! empty( $atts['terms'] ) ) {
+			$tax_query = array(
+				array(
+					'taxonomy' => $atts['taxonomy'],
+					'field' => 'slug',
+					'terms' => $atts['terms'],
+				),
+			);
+		}
+
+		$query_args = array(
+			'post_type'      => 'event',
+			'posts_per_page' => $atts['posts_per_page'],
+			'paged'          => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1,
+			'orderby'        => 'menu_order',
+			'meta_key'       => '_event_timestamp',
+            'orderby'        => 'meta_value_num',
+			'order'          => 'DESC',
+		);
+
+		if ( ! empty( $tax_query ) ) {
+			$query_args['tax_query'] = $tax_query;
+		}
+
+		$html = '';
+		$date_format = get_option( 'date_format' );
+		$query = new WP_Query( $query_args );
+
+		if ( $query->have_posts() ) :
+			while ( $query->have_posts() ) :
+				$query->the_post();
+
+				// Initialze the $loop variable.
+				$loop = '';
+				$events = array();
+				$events['building'] = genesis_get_custom_field( '_event_building' );
+				$events['address'] = genesis_get_custom_field( '_event_address' );
+				$events['city'] = genesis_get_custom_field( '_event_city' );
+				$events['state'] = genesis_get_custom_field( '_event_state' );
+				$events['zip'] = genesis_get_custom_field( '_event_zip' );
+				$events['date'] = genesis_get_custom_field( '_event_date' );
+				$events['time_range'] = genesis_get_custom_field( '_event_time_range' );
+				$events['timestamp'] = genesis_get_custom_field( '_event_timestamp' );
+				$events['url'] = genesis_get_custom_field( '_event_url' );
+
+				$loop .= '<div class="pic">';
+
+				$loop .= sprintf( '<a class="entry-image-link" href="%1$s">%2$s</a>', get_permalink(), genesis_get_image( array( 'size' => 'large' ) ) );
+
+				$loop .= '</div>';
+
+				$loop .= '<header class="entry-header">';
+					$loop .= '<p class="entry-meta">';
+						$loop .= '<time class="entry-time">' . date( $date_format, $events['timestamp'] ) . '</time>';
+					$loop .= '</p>';
+					$loop .= '<h2 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
+				$loop .= '</header>';
+
+				$loop .= '<div class="entry-content">';
+					$loop .= get_the_content();
+					$loop .= sprintf( '<p class="more-link-wrap"><a target="_blank" href="%s" class="button more-link">%s</a></p>', esc_url( $events['url'] ), __( 'RSVP', 'eventpress-pro' ) );
+				$loop .= '</div>';
+
+				$address = $events['address'] . ', ' . $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
+				$link = 'https://www.google.com/maps/search/?api=1&query=' . urlencode( $address );
+
+				$loop .= '<div class="entry-footer">';
+					$loop .= '<p class="entry-meta">';
+						$loop .= '<span>';
+							$loop .= __( 'Locaton: ', 'eventpress-pro' );
+							$loop .= '<a href="' . $link . '" target="_blank">';
+							$loop .= $events['building'] . ', ';
+							$loop .= $events['address'] . ', ';
+							$loop .= $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
+							$loop .= '</a>';
+						$loop .= '</span>';
+					$loop .= '</p>';
+				$loop .= '</div>';
+
+
+				// Wrap in post class div, and output.
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				$html .= sprintf( '<article class="%1$s">%2$s</article>', esc_attr( join( ' ', get_post_class( 'event-item' ) ) ), $loop );
+
+			endwhile;
+		endif;
+
+		wp_reset_postdata();
+
+		return '<div class="event-container"><div class="event-container-inner">' . $html . '</div></div>';
 	}
 
 	/**
