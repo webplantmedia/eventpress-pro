@@ -309,6 +309,7 @@ class EventPress_Pro {
 		$atts = shortcode_atts(
 			array(
 				'posts_per_page' => 12,
+				'show_content' => 1,
 				'class' => '',
 				'taxonomy' => '',
 				'terms' => '',
@@ -368,31 +369,33 @@ class EventPress_Pro {
 
 				$loop .= '<header class="entry-header">';
 					$loop .= '<p class="entry-meta">';
-						$loop .= '<time class="entry-time">' . date( $date_format, $events['timestamp'] ) . '</time>';
+						$loop .= '<time class="entry-time">' . date( $date_format, $events['timestamp'] ) . ', ' . wp_kses_post( $events['time_range'] ) . '</time>';
 					$loop .= '</p>';
 					$loop .= '<h2 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
 				$loop .= '</header>';
 
-				$loop .= '<div class="entry-content">';
-					$loop .= get_the_content();
-					$loop .= sprintf( '<p class="more-link-wrap"><a target="_blank" href="%s" class="button more-link">%s</a></p>', esc_url( $events['url'] ), __( 'RSVP', 'eventpress-pro' ) );
-				$loop .= '</div>';
+				if ( $atts['show_content'] ) {
+					$loop .= '<div class="entry-content">';
+						$loop .= get_the_content();
+						$loop .= sprintf( '<p class="more-link-wrap"><a target="_blank" href="%s" class="button more-link">%s</a></p>', esc_url( $events['url'] ), __( 'RSVP', 'eventpress-pro' ) );
+					$loop .= '</div>';
 
-				$address = $events['address'] . ', ' . $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
-				$link = 'https://www.google.com/maps/search/?api=1&query=' . urlencode( $address );
+					$address = $events['address'] . ', ' . $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
+					$link = 'https://www.google.com/maps/search/?api=1&query=' . urlencode( $address );
 
-				$loop .= '<div class="entry-footer">';
-					$loop .= '<p class="entry-meta">';
-						$loop .= '<span>';
-							$loop .= __( 'Locaton: ', 'eventpress-pro' );
-							$loop .= '<a href="' . $link . '" target="_blank">';
-							$loop .= $events['building'] . ', ';
-							$loop .= $events['address'] . ', ';
-							$loop .= $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
-							$loop .= '</a>';
-						$loop .= '</span>';
-					$loop .= '</p>';
-				$loop .= '</div>';
+					$loop .= '<div class="entry-footer">';
+						$loop .= '<p class="entry-meta">';
+							$loop .= '<span>';
+								$loop .= __( 'Locaton: ', 'eventpress-pro' );
+								$loop .= '<a href="' . $link . '" target="_blank">';
+								$loop .= $events['building'] . ', ';
+								$loop .= $events['address'] . ', ';
+								$loop .= $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
+								$loop .= '</a>';
+							$loop .= '</span>';
+						$loop .= '</p>';
+					$loop .= '</div>';
+				}
 
 
 				// Wrap in post class div, and output.
