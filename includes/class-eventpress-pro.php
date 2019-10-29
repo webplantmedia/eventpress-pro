@@ -308,6 +308,7 @@ class EventPress_Pro {
 
 		$atts = shortcode_atts(
 			array(
+				'past' => 0,
 				'posts_per_page' => 12,
 				'show_content' => 1,
 				'class' => '',
@@ -338,6 +339,18 @@ class EventPress_Pro {
 
 		if ( ! empty( $tax_query ) ) {
 			$query_args['tax_query'] = $tax_query;
+		}
+
+		if ( $atts['past'] ) {
+			$now = time() + (1 * 6 * 60 * 60);
+
+			$meta_query = array(
+				'key'     => '_event_timestamp',
+				'value'   => $now,
+				'compare' => '<=',
+			);
+
+			$query_args['meta_query'] = $meta_query;
 		}
 
 		$html = '';
