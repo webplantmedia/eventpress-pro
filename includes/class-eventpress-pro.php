@@ -56,7 +56,7 @@ class EventPress_Pro {
 				),
 				'col2' => array(
 					__( 'Date:', 'eventpress-pro' ) => '_event_date',
-					__( 'Time:', 'eventpress-pro' ) => '_event_time',
+					__( 'Time Range:', 'eventpress-pro' ) => '_event_time_range',
 				),
 			)
 		);
@@ -222,6 +222,11 @@ class EventPress_Pro {
 			/** Save/Update/Delete */
 			if ( $value ) {
 				update_post_meta( $post->ID, $key, $value );
+
+				if ( $key == '_event_date' ) {
+					$timestamp = strtotime( $value );
+					update_post_meta( $post->ID, '_event_timestamp', $timestamp );
+				}
 			} else {
 				delete_post_meta( $post->ID, $key );
 			}

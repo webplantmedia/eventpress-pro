@@ -22,6 +22,9 @@ echo '<div style="width: 45%; float: left;">';
 
 foreach ( (array) $this->event_details['col2'] as $label => $key ) {
 	printf( wp_kses( $pattern, $this->allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
+	if ( $key == '_event_date' ) {
+		printf( '<code>Timestamp: %s</code>', genesis_get_custom_field( '_event_timestamp' ) );
+	}
 }
 
 echo '</div><br style="clear: both;" /><br /><br />';
