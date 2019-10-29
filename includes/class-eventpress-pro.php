@@ -48,18 +48,15 @@ class EventPress_Pro {
 			'eventpress_property_details',
 			array(
 				'col1' => array(
-					__( 'Price:', 'eventpress-pro' ) => '_event_price',
+					__( 'Building:', 'eventpress-pro' ) => '_event_building',
 					__( 'Address:', 'eventpress-pro' ) => '_event_address',
 					__( 'City:', 'eventpress-pro' )  => '_event_city',
 					__( 'State:', 'eventpress-pro' ) => '_event_state',
 					__( 'ZIP:', 'eventpress-pro' )   => '_event_zip',
 				),
 				'col2' => array(
-					__( 'MLS #:', 'eventpress-pro' ) => '_event_mls',
-					__( 'Square Feet:', 'eventpress-pro' ) => '_event_sqft',
-					__( 'Bedrooms:', 'eventpress-pro' ) => '_event_bedrooms',
-					__( 'Bathrooms:', 'eventpress-pro' ) => '_event_bathrooms',
-					__( 'Basement:', 'eventpress-pro' ) => '_event_basement',
+					__( 'Date:', 'eventpress-pro' ) => '_event_date',
+					__( 'Time:', 'eventpress-pro' ) => '_event_time',
 				),
 			)
 		);
@@ -228,14 +225,6 @@ class EventPress_Pro {
 			} else {
 				delete_post_meta( $post->ID, $key );
 			}
-		}
-
-		// Extra check for price that can create a sortable value.
-		if ( isset( $property_details[0]['_event_price'] ) && ! empty( $property_details[0]['_event_price'] ) ) {
-			$price_sortable = preg_replace( '/[^0-9\.]/', '', $property_details[0]['_event_price'] );
-			update_post_meta( $post_id, '_event_price_sortable', floatval( $price_sortable ) );
-		} else {
-			delete_post_meta( $post_id, '_event_price_sortable' );
 		}
 	}
 
