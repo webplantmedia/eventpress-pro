@@ -325,7 +325,7 @@ class EventPress_Taxonomies {
 	/**
 	 * Register the property features taxonomy, manually.
 	 */
-	public function property_features_taxonomy() {
+	public function event_features_taxonomy() {
 
 		$name = 'Features';
 
@@ -385,7 +385,7 @@ class EventPress_Taxonomies {
 	 */
 	public function get_taxonomies() {
 
-		return array_merge( $this->property_features_taxonomy(), (array) get_option( $this->settings_field ) );
+		return array_merge( $this->event_features_taxonomy(), (array) get_option( $this->settings_field ) );
 
 	}
 }

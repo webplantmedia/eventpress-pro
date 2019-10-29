@@ -37,7 +37,7 @@
 				<?php
 				$alt = true;
 
-				$event_taxonomies = array_merge( $this->property_features_taxonomy(), get_option( $this->settings_field ) );
+				$event_taxonomies = array_merge( $this->event_features_taxonomy(), get_option( $this->settings_field ) );
 
 				foreach ( (array) $event_taxonomies as $tax_id => $data ) :
 					?>

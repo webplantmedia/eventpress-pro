@@ -109,8 +109,8 @@ class EventPress_Pro {
 		add_action( 'save_post', array( $this, 'metabox_save' ), 1, 2 );
 
 		add_shortcode( 'event_details', array( $this, 'event_details_shortcode' ) );
-		add_shortcode( 'property_map', array( $this, 'property_map_shortcode' ) );
-		add_shortcode( 'property_video', array( $this, 'property_video_shortcode' ) );
+		add_shortcode( 'event_map', array( $this, 'event_map_shortcode' ) );
+		add_shortcode( 'event_video', array( $this, 'event_video_shortcode' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_js' ) );
 
@@ -332,7 +332,7 @@ class EventPress_Pro {
 	 *
 	 * @param  array $atts Attributes.
 	 */
-	public function property_map_shortcode( $atts ) {
+	public function event_map_shortcode( $atts ) {
 
 		return genesis_get_custom_field( '_event_map' );
 
@@ -343,7 +343,7 @@ class EventPress_Pro {
 	 *
 	 * @param  array $atts Attributes.
 	 */
-	public function property_video_shortcode( $atts ) {
+	public function event_video_shortcode( $atts ) {
 
 		return genesis_get_custom_field( '_event_video' );
 
