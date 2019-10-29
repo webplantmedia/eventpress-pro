@@ -147,7 +147,7 @@ class EventPress_Pro {
 				'menu_icon'     => 'dashicons-calendar-alt',
 				'has_archive'   => true,
 				'show_in_rest'  => true,
-				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
+				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars', 'genesis-cpt-archives-settings' ),
 				'rewrite'       => array( 'slug' => 'events' ),
 			)
 		);
