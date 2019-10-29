@@ -27,20 +27,4 @@ foreach ( (array) $this->event_details['col2'] as $label => $key ) {
 	}
 }
 
-echo '</div><br style="clear: both;" /><br /><br />';
-
-echo '<div style="width: 45%; float: left;">';
-
-printf( '<p><label>%1$s<br /><textarea name="ap[_event_map]" rows="5" cols="18" style="%2$s">%3$s</textarea></label></p>', esc_html__( 'Enter Map Embed Code:', 'eventpress-pro' ), 'width: 99%;', wp_kses( genesis_get_custom_field( '_event_map' ), $this->allowed_tags ) );
-
-printf( '<p><code>%s</code></p>', '[event_map]' );
-
-echo '</div>';
-
-echo '<div style="width: 45%; float: left;">';
-
-printf( '<p><label>%1$s:<br /><textarea name="ap[_event_video]" rows="5" cols="18" style="%2$s">%3$s</textarea></label></p>', esc_html__( 'Enter Video Embed Code', 'eventpress-pro' ), 'width: 99%;', wp_kses( genesis_get_custom_field( '_event_video' ), $this->allowed_tags ) );
-
-printf( '<p><code>%s</code></p>', '[event_video]' );
-
 echo '</div><br style="clear: both;" />';

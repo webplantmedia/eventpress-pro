@@ -57,6 +57,7 @@ class EventPress_Pro {
 				'col2' => array(
 					__( 'Date:', 'eventpress-pro' ) => '_event_date',
 					__( 'Time Range:', 'eventpress-pro' ) => '_event_time_range',
+					__( 'Event URL:', 'eventpress-pro' ) => '_event_url',
 				),
 			)
 		);
@@ -109,8 +110,6 @@ class EventPress_Pro {
 		add_action( 'save_post', array( $this, 'metabox_save' ), 1, 2 );
 
 		add_shortcode( 'event_details', array( $this, 'event_details_shortcode' ) );
-		add_shortcode( 'event_map', array( $this, 'event_map_shortcode' ) );
-		add_shortcode( 'event_video', array( $this, 'event_video_shortcode' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_js' ) );
 
@@ -148,7 +147,7 @@ class EventPress_Pro {
 				'menu_icon'     => 'dashicons-calendar-alt',
 				'has_archive'   => true,
 				'show_in_rest'  => true,
-				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
+				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
 				'rewrite'       => array( 'slug' => 'events' ),
 			)
 		);
@@ -329,28 +328,6 @@ class EventPress_Pro {
 		$output .= '</div>';
 
 		return $output;
-
-	}
-
-	/**
-	 * Map shortcode.
-	 *
-	 * @param  array $atts Attributes.
-	 */
-	public function event_map_shortcode( $atts ) {
-
-		return genesis_get_custom_field( '_event_map' );
-
-	}
-
-	/**
-	 * Video shortcode.
-	 *
-	 * @param  array $atts Attributes.
-	 */
-	public function event_video_shortcode( $atts ) {
-
-		return genesis_get_custom_field( '_event_video' );
 
 	}
 
