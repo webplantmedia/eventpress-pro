@@ -309,7 +309,7 @@ class EventPress_Pro {
 		$atts = shortcode_atts(
 			array(
 				'posts_per_page' => 12,
-				'class' => 'alignfull',
+				'class' => '',
 				'taxonomy' => '',
 				'terms' => '',
 			), $atts, 'event_posts'
@@ -404,7 +404,7 @@ class EventPress_Pro {
 
 		wp_reset_postdata();
 
-		return '<div class="event-container"><div class="event-container-inner">' . $html . '</div></div>';
+		return '<div class="event-container '.$atts['class'].'"><div class="event-container-inner">' . $html . '</div></div>';
 	}
 
 	/**
