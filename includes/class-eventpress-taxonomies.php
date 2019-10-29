@@ -323,7 +323,7 @@ class EventPress_Taxonomies {
 	}
 
 	/**
-	 * Register the property features taxonomy, manually.
+	 * Register the event features taxonomy, manually.
 	 */
 	public function event_features_taxonomy() {
 

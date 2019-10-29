@@ -26,7 +26,7 @@ class EventPress_Pro {
 	public $menu_page = 'register-taxonomies';
 
 	/**
-	 * Property details array.
+	 * Event details array.
 	 *
 	 * @var array
 	 */
@@ -162,7 +162,7 @@ class EventPress_Pro {
 	 */
 	public function register_meta_boxes() {
 
-		add_meta_box( 'event_details_metabox', __( 'Property Details', 'eventpress-pro' ), array( &$this, 'event_details_metabox' ), 'event', 'normal', 'high' );
+		add_meta_box( 'event_details_metabox', __( 'Event Details', 'eventpress-pro' ), array( &$this, 'event_details_metabox' ), 'event', 'normal', 'high' );
 
 	}
 
@@ -304,15 +304,15 @@ class EventPress_Pro {
 
 		$output = '';
 
-		$output .= '<div class="property-details">';
+		$output .= '<div class="event-details">';
 
-		$output .= '<div class="property-details-col1 one-half first">';
+		$output .= '<div class="event-details-col1 one-half first">';
 
 		foreach ( (array) $this->event_details['col1'] as $label => $key ) {
 			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 		}
 
-		$output .= '</div><div class="property-details-col2 one-half">';
+		$output .= '</div><div class="event-details-col2 one-half">';
 
 		foreach ( (array) $this->event_details['col2'] as $label => $key ) {
 			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );

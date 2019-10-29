@@ -97,13 +97,13 @@
 			<div class="form-field form-required">
 				<label for="taxonomy-name"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></label>
 				<input name="eventpress_taxonomy[name]" id="taxonomy-name" type="text" value="" size="40" />
-				<p><?php esc_html_e( 'Example: "Property Types" or "Locations"', 'eventpress-pro' ); ?></p>
+				<p><?php esc_html_e( 'Example: "Event Types" or "Locations"', 'eventpress-pro' ); ?></p>
 			</div>
 
 			<div class="form-field form-required">
 				<label for="taxonomy-singular-name"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></label>
 				<input name="eventpress_taxonomy[singular_name]" id="taxonomy-singular-name" type="text" value="" size="40" />
-				<p><?php esc_html_e( 'Example: "Property Type" or "Location"', 'eventpress-pro' ); ?></p>
+				<p><?php esc_html_e( 'Example: "Event Type" or "Location"', 'eventpress-pro' ); ?></p>
 			</div>
 
 			<?php submit_button( __( 'Add New Taxonomy', 'eventpress-pro' ), 'secondary' ); ?>

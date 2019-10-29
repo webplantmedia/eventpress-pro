@@ -34,13 +34,13 @@ if ( ! empty( $option_key ) && array_key_exists( $option_key, (array) $options )
 	<tr class="form-field">
 		<th scope="row" valign="top"><label for="eventpress_taxonomy[name]"><?php esc_html_e( 'Plural Name', 'eventpress-pro' ); ?></label></th>
 		<td><input name="eventpress_taxonomy[name]" id="eventpress_taxonomy[name]" type="text" value="<?php echo esc_html( $received_taxonomy['labels']['name'] ); ?>" size="40" />
-		<p class="description"><?php esc_html_e( 'Example: "Property Types" or "Locations"', 'eventpress-pro' ); ?></p></td>
+		<p class="description"><?php esc_html_e( 'Example: "Event Types" or "Locations"', 'eventpress-pro' ); ?></p></td>
 	</tr>
 
 	<tr class="form-field">
 		<th scope="row" valign="top"><label for="eventpress_taxonomy[singular_name]"><?php esc_html_e( 'Singular Name', 'eventpress-pro' ); ?></label></th>
 		<td><input name="eventpress_taxonomy[singular_name]" id="eventpress_taxonomy[singular_name]" type="text" value="<?php echo esc_html( $received_taxonomy['labels']['singular_name'] ); ?>" size="40" />
-		<p class="description"><?php esc_html_e( 'Example: "Property Type" or "Location"', 'eventpress-pro' ); ?></p></td>
+		<p class="description"><?php esc_html_e( 'Example: "Event Type" or "Location"', 'eventpress-pro' ); ?></p></td>
 	</tr>
 
 </table>

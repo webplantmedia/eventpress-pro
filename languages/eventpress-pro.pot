@@ -48,7 +48,7 @@ msgid "How many results should be returned?"
 msgstr ""
 
 #: includes/class-eventpress-pro-search-widget.php:23
-msgid "Display property search dropdown"
+msgid "Display event search dropdown"
 msgstr ""
 
 #: includes/class-eventpress-pro-search-widget.php:32
@@ -149,7 +149,7 @@ msgid "No events found in Trash"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:167
-msgid "Property Details"
+msgid "Event Details"
 msgstr ""
 
 #: includes/class-eventpress-pro.php:250
@@ -316,11 +316,11 @@ msgid ""
 msgstr ""
 
 #: includes/views/create-tax.php:100 includes/views/edit-tax.php:37
-msgid "Example: \"Property Types\" or \"Locations\""
+msgid "Example: \"Event Types\" or \"Locations\""
 msgstr ""
 
 #: includes/views/create-tax.php:106 includes/views/edit-tax.php:43
-msgid "Example: \"Property Type\" or \"Location\""
+msgid "Example: \"Event Type\" or \"Location\""
 msgstr ""
 
 #: includes/views/create-tax.php:109

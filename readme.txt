@@ -83,22 +83,22 @@ Yes, you can use the filter eventpress_featured_events_allowed_html.
 * Update Events menu icon
 
 = 1.0.0 =
-* Localized the property details labels
+* Localized the event details labels
 * Fixes typo
-* Change the property details filter name
+* Change the event details filter name
 * Enable comments on events post type
 * Fix admin redirect bug
 * Tag for public release
 
 = 0.9.1 =
 * Flush rewrite rules when plugin is activated, or taxonomies are created.
-* Remove hard line break between dropdowns in the property search widget.
-* Add button text as a widget option in the property search widget.
+* Remove hard line break between dropdowns in the event search widget.
+* Add button text as a widget option in the event search widget.
 * Remove a rogue `</div>`.
 * Move the comma to the proper place in the address output in Featured Events.
 * Hook the init function to `after_setup_theme` so filters in the child theme will work.
 * Short-circuit the plugin if a Genesis child theme isn't active.
-* Make the property details (label and custom field key) filterable.
+* Make the event details (label and custom field key) filterable.
 * Make the loop output filterable in Featured Events.
 
 = 0.9.0 =

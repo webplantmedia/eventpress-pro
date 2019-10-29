@@ -19,17 +19,17 @@ class EventPress_Pro_Search_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname'   => 'property-search',
-			'description' => __( 'Display property search dropdown', 'eventpress-pro' ),
+			'classname'   => 'event-search',
+			'description' => __( 'Display event search dropdown', 'eventpress-pro' ),
 		);
 
 		$control_ops = array(
 			'width'   => 200,
 			'height'  => 250,
-			'id_base' => 'property-search',
+			'id_base' => 'event-search',
 		);
 
-		parent::__construct( 'property-search', __( 'EventPress - Pro Search', 'eventpress-pro' ), $widget_ops, $control_ops );
+		parent::__construct( 'event-search', __( 'EventPress - Pro Search', 'eventpress-pro' ), $widget_ops, $control_ops );
 	}
 
 	/**
