@@ -312,6 +312,7 @@ class EventPress_Pro {
 				'posts_per_page' => 12,
 				'show_content' => 1,
 				'class' => '',
+				'cols' => 2,
 				'taxonomy' => '',
 				'terms' => '',
 			), $atts, 'event_posts'
@@ -334,20 +335,28 @@ class EventPress_Pro {
 			'orderby'        => 'menu_order',
 			'meta_key'       => '_event_timestamp',
             'orderby'        => 'meta_value_num',
-			'order'          => 'DESC',
+			'order'          => 'ASC',
 		);
 
 		if ( ! empty( $tax_query ) ) {
 			$query_args['tax_query'] = $tax_query;
 		}
 
+		$now = time() + (1 * 24 * 60 * 60);
 		if ( $atts['past'] ) {
-			$now = time() + (1 * 6 * 60 * 60);
-
 			$meta_query = array(
 				'key'     => '_event_timestamp',
 				'value'   => $now,
 				'compare' => '<=',
+			);
+			$query_args['order'] = 'DESC';
+			$query_args['meta_query'] = $meta_query;
+		}
+		else {
+			$meta_query = array(
+				'key'     => '_event_timestamp',
+				'value'   => $now,
+				'compare' => '>',
 			);
 
 			$query_args['meta_query'] = $meta_query;
@@ -382,7 +391,12 @@ class EventPress_Pro {
 
 				$loop .= '<header class="entry-header">';
 					$loop .= '<p class="entry-meta">';
-						$loop .= '<time class="entry-time">' . date( $date_format, $events['timestamp'] ) . ', ' . wp_kses_post( $events['time_range'] ) . '</time>';
+						$loop .= '<time class="entry-time">';
+							$loop .= date( $date_format, $events['timestamp'] );
+							if ( $events['time_range'] ) {
+								$loop .= ', ' . wp_kses_post( $events['time_range'] );
+							}
+						$loop .= '</time>';
 					$loop .= '</p>';
 					$loop .= '<h2 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
 				$loop .= '</header>';
@@ -390,10 +404,27 @@ class EventPress_Pro {
 				if ( $atts['show_content'] ) {
 					$loop .= '<div class="entry-content">';
 						$loop .= get_the_content();
-						$loop .= sprintf( '<p class="more-link-wrap"><a target="_blank" href="%s" class="button more-link">%s</a></p>', esc_url( $events['url'] ), __( 'RSVP', 'eventpress-pro' ) );
+						if ( ! empty( $events['url'] ) ) {
+							$loop .= sprintf( '<p class="more-link-wrap"><a target="_blank" href="%s" class="button more-link">%s</a></p>', esc_url( $events['url'] ), __( 'RSVP', 'eventpress-pro' ) );
+						}
 					$loop .= '</div>';
 
-					$address = $events['address'] . ', ' . $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
+					$address = '';
+					if ( $events['building'] ) {
+						$address .= $events['building'] . ', ';
+					}
+					if ( $events['address'] ) {
+						$address .= $events['address'] . ', ';
+					}
+					if ( $events['address'] ) {
+						$address .= $events['city'] . ', ';
+					}
+					if ( $events['state'] ) {
+						$address .= $events['state'] . ' ';
+					}
+					if ( $events['zip'] ) {
+						$address .= $events['zip'];
+					}
 					$link = 'https://www.google.com/maps/search/?api=1&query=' . urlencode( $address );
 
 					$loop .= '<div class="entry-footer">';
@@ -401,9 +432,7 @@ class EventPress_Pro {
 							$loop .= '<span>';
 								$loop .= __( 'Locaton: ', 'eventpress-pro' );
 								$loop .= '<a href="' . $link . '" target="_blank">';
-								$loop .= $events['building'] . ', ';
-								$loop .= $events['address'] . ', ';
-								$loop .= $events['city'] . ', ' . $events['state'] . ' ' . $events['zip'];
+									$loop .= $address;
 								$loop .= '</a>';
 							$loop .= '</span>';
 						$loop .= '</p>';
@@ -420,7 +449,7 @@ class EventPress_Pro {
 
 		wp_reset_postdata();
 
-		return '<div class="event-container '.$atts['class'].'"><div class="event-container-inner">' . $html . '</div></div>';
+		return '<div class="event-container event-cols-' . $atts['cols'] . ' ' . $atts['class'].'"><div class="event-container-inner">' . $html . '</div></div>';
 	}
 
 	/**
