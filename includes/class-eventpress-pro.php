@@ -316,6 +316,8 @@ class EventPress_Pro {
 				'cols' => 2,
 				'taxonomy' => '',
 				'terms' => '',
+				'style' => 'grid',
+				'size' => 'large',
 			), $atts, 'event_posts'
 		);
 
@@ -386,7 +388,7 @@ class EventPress_Pro {
 
 				$loop .= '<div class="pic">';
 
-				$loop .= sprintf( '<a class="entry-image-link" href="%1$s">%2$s</a>', get_permalink(), genesis_get_image( array( 'size' => 'large' ) ) );
+				$loop .= sprintf( '<a class="entry-image-link" href="%1$s">%2$s</a>', get_permalink(), genesis_get_image( array( 'size' => $atts['size'] ) ) );
 
 				$loop .= '</div>';
 
@@ -399,7 +401,7 @@ class EventPress_Pro {
 							}
 						$loop .= '</time>';
 					$loop .= '</p>';
-					$loop .= '<h2 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
+					$loop .= '<h4 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
 				$loop .= '</header>';
 
 				if ( $atts['show_content'] || $atts['show_button'] ) {
@@ -454,7 +456,7 @@ class EventPress_Pro {
 
 		wp_reset_postdata();
 
-		return '<div class="event-container event-cols-' . $atts['cols'] . ' ' . $atts['class'].'"><div class="event-container-inner">' . $html . '</div></div>';
+		return '<div class="event-container event-style-' . $atts['style'] . ' event-cols-' . $atts['cols'] . ' ' . $atts['class'].'"><div class="event-container-inner">' . $html . '</div></div>';
 	}
 
 	/**
