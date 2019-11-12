@@ -345,7 +345,7 @@ class EventPress_Pro {
 			$query_args['tax_query'] = $tax_query;
 		}
 
-		$now = time() + (1 * 24 * 60 * 60);
+		$now = time() - (1 * 24 * 60 * 60);
 		if ( $atts['past'] ) {
 			$meta_query = array(
 				'key'     => '_event_timestamp',
@@ -368,6 +368,11 @@ class EventPress_Pro {
 		$html = '';
 		$date_format = get_option( 'date_format' );
 		$query = new WP_Query( $query_args );
+		$post_count = $query->post_count;
+
+		if ( $post_count < 3 ) {
+			$atts['cols'] = 2;
+		}
 
 		if ( $query->have_posts() ) :
 			while ( $query->have_posts() ) :
