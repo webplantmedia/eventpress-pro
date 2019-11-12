@@ -409,15 +409,16 @@ class EventPress_Pro {
 					$loop .= '<h4 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
 				$loop .= '</header>';
 
-				if ( $atts['show_content'] || $atts['show_button'] ) {
-					$loop .= '<div class="entry-content">';
-						if ( $atts['show_content'] ) {
-							$loop .= get_the_content();
-						}
-						if ( $atts['show_button'] ) {
-							$loop .= sprintf( '<p class="more-link-wrap"><a href="%s" class="button more-link">%s</a></p>', get_permalink(), __( 'Learn More', 'eventpress-pro' ) );
-						}
-					$loop .= '</div>';
+				if ( $atts['show_content'] ) {
+					$content = get_the_content();
+					if ( ! empty( $content ) ) {
+						$loop .= '<div class="entry-content">';
+						$loop .= $content;
+						$loop .= '</div>';
+					}
+				}
+				if ( $atts['show_button'] ) {
+					$loop .= sprintf( '<div class="entry-read-more"><a href="%s" class="button more-link">%s</a></div>', get_permalink(), __( 'Learn More', 'eventpress-pro' ) );
 				}
 
 				if ( $atts['show_content'] ) {
