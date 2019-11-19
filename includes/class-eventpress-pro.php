@@ -118,8 +118,53 @@ class EventPress_Pro {
 
 		add_filter( 'genesis_build_crumbs', array( $this, 'breadcrumbs' ), 10, 2 );
 
+		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 10, 1 );
+
+		add_filter( 'genesis_post_meta', array( $this, 'event_post_meta' ), 10, 1 );
 	}
 
+	/**
+	 * Change sort order
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $query Query array.
+	 * @return void
+	 */
+	function pre_get_posts( $query ) {
+		if ( is_admin() ) {
+			return;
+		}
+
+		$is_event_archive = false;
+
+		if ( $query->is_main_query() ) {
+			if ( is_post_type_archive( 'event' ) ) {    
+				$post_type = get_query_var( 'post_type' );
+				if ( 'event' == $post_type ) {
+					$is_event_archive = true;
+				}
+			}
+
+			if ( ! $is_event_archive ) {
+				$object = get_queried_object();
+				if ( ! empty( $object ) && isset( $object->taxonomy ) ) {
+					$taxonomies = get_object_taxonomies( 'event' );
+					if ( in_array( $object->taxonomy, $taxonomies ) ) {    
+						$is_event_archive = true;
+					}
+				}
+			}
+
+			if ( $is_event_archive ) {
+				$query->set( 'order', 'DESC' );
+				$query->set( 'orderby', 'meta_value_num' );
+				$query->set( 'posts_per_page', '12' );
+				$query->set( 'meta_key', '_event_timestamp' );
+			}
+		}
+
+	}
 	/**
 	 * Creates our "Event" post type.
 	 */
@@ -335,7 +380,6 @@ class EventPress_Pro {
 			'post_type'      => 'event',
 			'posts_per_page' => $atts['posts_per_page'],
 			'paged'          => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1,
-			'orderby'        => 'menu_order',
 			'meta_key'       => '_event_timestamp',
             'orderby'        => 'meta_value_num',
 			'order'          => 'ASC',
