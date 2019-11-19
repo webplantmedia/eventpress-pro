@@ -321,7 +321,11 @@ class EventPress_Pro {
 
 		switch ( $column ) {
 			case 'event_thumbnail':
-				printf( '<p>%s</p>', wp_kses( genesis_get_image( array( 'size' => 'thumbnail' ) ), $allowed_tags ) );
+				if ( has_post_thumbnail() ) {
+					$id = get_post_thumbnail_id();
+					$html = wp_get_attachment_image( $id, array( 150, 150 ), false );
+					printf( '<p>%s</p>', $html );
+				}
 				break;
 			case 'event_details':
 				foreach ( (array) $this->event_details['col1'] as $label => $key ) {
