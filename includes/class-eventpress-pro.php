@@ -120,7 +120,7 @@ class EventPress_Pro {
 
 		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 10, 1 );
 
-		add_filter( 'genesis_post_meta', array( $this, 'event_post_meta' ), 10, 1 );
+		// add_filter( 'genesis_post_meta', array( $this, 'event_post_meta' ), 10, 1 );
 	}
 
 	/**
