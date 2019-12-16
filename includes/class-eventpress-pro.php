@@ -259,10 +259,13 @@ class EventPress_Pro {
 		}
 
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$event_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), array( $this->allowed_tags ) );
+		// $event_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), array( $this->allowed_tags ) );
+		$event_details[0] = $_POST['ap'];
 
 		/** Store the custom fields */
 		foreach ( (array) $event_details[0] as $key => $value ) {
+
+			$value = wp_kses( $value, $this->allowed_tags );
 
 			/** Save/Update/Delete */
 			if ( $value ) {
@@ -276,6 +279,8 @@ class EventPress_Pro {
 				delete_post_meta( $post->ID, $key );
 			}
 		}
+
+		die();
 	}
 
 	/**
