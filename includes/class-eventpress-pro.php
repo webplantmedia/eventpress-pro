@@ -53,6 +53,7 @@ class EventPress_Pro {
 					__( 'City:', 'eventpress-pro' )  => '_event_city',
 					__( 'State:', 'eventpress-pro' ) => '_event_state',
 					__( 'ZIP:', 'eventpress-pro' )   => '_event_zip',
+					__( 'Note:', 'eventpress-pro' )   => '_event_note',
 				),
 				'col2' => array(
 					__( 'Date:', 'eventpress-pro' ) => '_event_date',
