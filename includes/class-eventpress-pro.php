@@ -59,6 +59,8 @@ class EventPress_Pro {
 					__( 'Date:', 'eventpress-pro' ) => '_event_date',
 					__( 'Time Range:', 'eventpress-pro' ) => '_event_time_range',
 					__( 'Event URL:', 'eventpress-pro' ) => '_event_url',
+					__( 'Webinar ID:', 'eventpress-pro' ) => '_webinar_id',
+					__( 'Event Tag:', 'eventpress-pro' ) => '_event_tag',
 				),
 			)
 		);
@@ -270,6 +272,11 @@ class EventPress_Pro {
 
 			/** Save/Update/Delete */
 			if ( $value ) {
+				if ( $key == '_webinar_id' ) {
+					$value = preg_replace("/[^0-9]/", "", $value );
+					$value = intval( $value );
+				}
+
 				update_post_meta( $post->ID, $key, $value );
 
 				if ( $key == '_event_date' ) {
@@ -444,6 +451,8 @@ class EventPress_Pro {
 				$events['time_range'] = genesis_get_custom_field( '_event_time_range' );
 				$events['timestamp'] = genesis_get_custom_field( '_event_timestamp' );
 				$events['url'] = genesis_get_custom_field( '_event_url' );
+				$events['webinarid'] = genesis_get_custom_field( '_webinar_id' );
+				$events['eventtag'] = genesis_get_custom_field( '_event_tag' );
 
 				$loop .= '<div class="pic">';
 
