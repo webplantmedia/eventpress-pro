@@ -407,7 +407,8 @@ class EventPress_Pro {
 			$query_args['tax_query'] = $tax_query;
 		}
 
-		$now = time() - (1 * 24 * 60 * 60);
+		$time = current_time( 'timestamp' );
+		$now = $time - (1 * 12 * 60 * 60);
 		if ( $atts['past'] ) {
 			$meta_query = array(
 				'key'     => '_event_timestamp',
