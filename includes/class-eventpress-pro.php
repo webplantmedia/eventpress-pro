@@ -407,8 +407,8 @@ class EventPress_Pro {
 			$query_args['tax_query'] = $tax_query;
 		}
 
-		$time = current_time( 'timestamp' );
-		$now = $time - (1 * 24 * 60 * 60);
+		$time = current_time( 'timestamp' ); // the day of the event, starting at 12am
+		$now = $time - (1 * 24 * 60 * 60); // need to subtract 24 hours to expire event at midnight
 		if ( $atts['past'] ) {
 			$meta_query = array(
 				'key'     => '_event_timestamp',
