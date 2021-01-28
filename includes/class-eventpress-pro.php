@@ -376,6 +376,7 @@ class EventPress_Pro {
 				'posts_per_page' => 12,
 				'show_content' => 0,
 				'show_button' => 1,
+				'show_excerpt_only' => 0,
 				'class' => '',
 				'cols' => 2,
 				'taxonomy' => '',
@@ -442,6 +443,8 @@ class EventPress_Pro {
 			while ( $query->have_posts() ) :
 				$query->the_post();
 
+				global $post;
+
 				// Initialze the $loop variable.
 				$loop = '';
 				$events = array();
@@ -460,7 +463,7 @@ class EventPress_Pro {
 				$events['eventtag'] = genesis_get_custom_field( '_event_tag' );
 
 				$is_expired = false;
-				if ( $event['timestamp'] < $now ) {
+				if ( $events['timestamp'] < $now ) {
 					$is_expired = true;
 				}
 
@@ -487,6 +490,13 @@ class EventPress_Pro {
 					if ( ! empty( $content ) ) {
 						$loop .= '<div class="entry-content">';
 						$loop .= $content;
+						$loop .= '</div>';
+					}
+				}
+				if ( $atts['show_excerpt_only'] ) {
+					if ( !empty ( $post->post_excerpt ) ) {
+						$loop .= '<div class="entry-content">';
+						$loop .= '<p>'.$post->post_excerpt.'</p>';
 						$loop .= '</div>';
 					}
 				}
