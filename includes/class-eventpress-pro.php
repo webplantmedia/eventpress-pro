@@ -54,6 +54,7 @@ class EventPress_Pro {
 					__( 'State:', 'eventpress-pro' ) => '_event_state',
 					__( 'ZIP:', 'eventpress-pro' )   => '_event_zip',
 					__( 'Note:', 'eventpress-pro' )   => '_event_note',
+					__( 'Button Text:', 'eventpress-pro' )   => '_event_button_text',
 				),
 				'col2' => array(
 					__( 'Date:', 'eventpress-pro' ) => '_event_date',
@@ -449,6 +450,7 @@ class EventPress_Pro {
 				$events['city'] = genesis_get_custom_field( '_event_city' );
 				$events['state'] = genesis_get_custom_field( '_event_state' );
 				$events['zip'] = genesis_get_custom_field( '_event_zip' );
+				$events['buttontext'] = genesis_get_custom_field( '_event_button_text' );
 				$events['date'] = genesis_get_custom_field( '_event_date' );
 				$events['time_range'] = genesis_get_custom_field( '_event_time_range' );
 				$events['timestamp'] = genesis_get_custom_field( '_event_timestamp' );
@@ -456,6 +458,11 @@ class EventPress_Pro {
 				$events['webinarid'] = genesis_get_custom_field( '_webinar_id' );
 				$events['meetingid'] = genesis_get_custom_field( '_meeting_id' );
 				$events['eventtag'] = genesis_get_custom_field( '_event_tag' );
+
+				$is_expired = false;
+				if ( $event['timestamp'] < $now ) {
+					$is_expired = true;
+				}
 
 				$loop .= '<div class="pic">';
 
@@ -484,7 +491,18 @@ class EventPress_Pro {
 					}
 				}
 				if ( $atts['show_button'] ) {
-					$loop .= sprintf( '<div class="entry-read-more"><a href="%s" class="button more-link">%s</a></div>', get_permalink(), __( 'Learn More', 'eventpress-pro' ) );
+					if ( $is_expired ) {
+						$button_text = __( 'View Past Event', 'eventpress-pro' );
+					}
+					else {
+						$button_text = __( 'Learn More', 'eventpress-pro' );
+					}
+
+					if ( $events['buttontext'] ) {
+						$button_text = $events['buttontext'];
+					}
+
+					$loop .= sprintf( '<div class="entry-read-more"><a href="%s" class="button more-link">%s</a></div>', get_permalink(), $button_text );
 				}
 
 				if ( $atts['show_content'] ) {
