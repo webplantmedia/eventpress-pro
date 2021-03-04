@@ -196,7 +196,7 @@ class EventPress_Pro {
 				'query_var'     => true,
 				'menu_position' => 6,
 				'menu_icon'     => 'dashicons-calendar-alt',
-				'has_archive'   => true,
+				'has_archive'   => 'events-archive',
 				'show_in_rest'  => true,
 				'supports'      => array( 'title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars', 'genesis-cpt-archives-settings' ),
 				'rewrite'       => array( 'slug' => 'events' ),
