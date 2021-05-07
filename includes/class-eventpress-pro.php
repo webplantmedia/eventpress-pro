@@ -64,6 +64,7 @@ class EventPress_Pro {
 					__( 'Meeting ID:', 'eventpress-pro' ) => '_meeting_id',
 					__( 'Event Tag:', 'eventpress-pro' ) => '_event_tag',
 					__( 'Download Link:', 'eventpress-pro' ) => '_download_link',
+					__( 'Heading Past Event:', 'eventpress-pro' ) => '_heading_past_event',
 				),
 			)
 		);
@@ -463,6 +464,7 @@ class EventPress_Pro {
 				$events['meetingid'] = genesis_get_custom_field( '_meeting_id' );
 				$events['eventtag'] = genesis_get_custom_field( '_event_tag' );
 				$events['downloadlink'] = genesis_get_custom_field( '_download_link' );
+				$events['headingpastevent'] = genesis_get_custom_field( '_heading_past_event' );
 
 				$is_expired = false;
 				if ( $events['timestamp'] < $now ) {
