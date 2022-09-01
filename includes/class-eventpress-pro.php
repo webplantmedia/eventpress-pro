@@ -473,27 +473,36 @@ class EventPress_Pro
 				$events['eventtag'] = genesis_get_custom_field('_event_tag');
 				$events['downloadlink'] = genesis_get_custom_field('_download_link');
 
+				$day = date('d', $events['timestamp']);
+				$month = date('M', $events['timestamp']);
 				$is_expired = false;
 				if ($events['timestamp'] < $now) {
 					$is_expired = true;
 				}
 
 				$loop .= '<div class="pic">';
-
 				$loop .= sprintf('<a class="entry-image-link" href="%1$s">%2$s</a>', get_permalink(), genesis_get_image(array('size' => $atts['size'])));
-
 				$loop .= '</div>';
 
+				$loop .= '<div class="date-box">';
+				$loop .= '<div class="day-box observer__flipInX">';
+				$loop .= $day;
+				$loop .= '</div>';
+				$loop .= '<div class="month-box observer__flipInX animate__delay-300ms">';
+				$loop .= $month;
+				$loop .= '</div>';
+				$loop .= '</div>';
+
+				$loop .= '<div class="content-box">';
 				$loop .= '<header class="entry-header">';
+				$loop .= '<h4 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
 				$loop .= '<p class="entry-meta">';
 				$loop .= '<time class="entry-time">';
-				$loop .= date($date_format, $events['timestamp']);
 				if ($events['time_range']) {
-					$loop .= ', ' . wp_kses_post($events['time_range']);
+					$loop .= '<i class="ion-android-time"></i>' . wp_kses_post($events['time_range']);
 				}
 				$loop .= '</time>';
 				$loop .= '</p>';
-				$loop .= '<h4 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
 				$loop .= '</header>';
 
 				if ($atts['show_content']) {
@@ -567,7 +576,7 @@ class EventPress_Pro
 					$loop .= '</p>';
 					$loop .= '</div>';
 				}
-
+				$loop .= '</div>';
 
 				// Wrap in post class div, and output.
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
