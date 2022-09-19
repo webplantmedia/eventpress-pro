@@ -475,6 +475,10 @@ class EventPress_Pro
 
 				$day = date('d', $events['timestamp']);
 				$month = date('M', $events['timestamp']);
+
+				$search = array('Mar', 'Apr', 'May', 'Jun', 'Jul', 'Sep');
+				$replace = array('March', 'April', 'May', 'June', 'July', 'Sept');
+				$month = str_replace($search, $replace, $month);
 				$is_expired = false;
 				if ($events['timestamp'] < $now) {
 					$is_expired = true;
