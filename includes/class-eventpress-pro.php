@@ -499,7 +499,7 @@ class EventPress_Pro
 
 				$loop .= '<div class="content-box">';
 				$loop .= '<header class="entry-header">';
-				$loop .= '<h4 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
+				$loop .= '<h3 class="entry-title" itemprop="headline"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
 				$loop .= '<p class="entry-meta">';
 				$loop .= '<time class="entry-time">';
 				if ($events['time_range']) {
@@ -526,8 +526,6 @@ class EventPress_Pro
 				}
 				if ($atts['show_button']) {
 					$cta_button_text = '';
-					$cta_button = '';
-					$button_class = '';
 					if ($is_expired) {
 						$button_text = __('View Past Event', 'eventpress-pro');
 					} else {
@@ -542,12 +540,8 @@ class EventPress_Pro
 					if ($events['ctabuttontext']) {
 						$cta_button_text = $events['ctabuttontext'];
 					}
-					if ($cta_button_text) {
-						$button_class = ' entry-footer-two-buttons';
-						$cta_button = sprintf('<a href="%s" class="button go-link">%s</a>', get_permalink() . "#go", $cta_button_text);
-					}
 
-					$loop .= sprintf('<div class="entry-read-more' . $button_class . '"><a href="%s" class="button more-link">%s</a>' . $cta_button . '</div>', get_permalink(), $button_text);
+					$loop .= '<div class="is-horizontal is-content-justification-center is-nowrap is-layout-flex wp-block-buttons"><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '">' . $button_text . '</a></div><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-fill"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '#go">' . $cta_button_text . '</a></div></div>';
 				}
 
 				if ($atts['show_content']) {
