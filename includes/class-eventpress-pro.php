@@ -541,7 +541,11 @@ class EventPress_Pro
 						$cta_button_text = $events['ctabuttontext'];
 					}
 
-					$loop .= '<div class="is-horizontal is-content-justification-center is-nowrap is-layout-flex wp-block-buttons"><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '">' . $button_text . '</a></div><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-fill"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '#go">' . $cta_button_text . '</a></div></div>';
+					if ($cta_button_text) {
+						$loop .= '<div class="is-horizontal is-content-justification-center is-nowrap is-layout-flex wp-block-buttons"><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '">' . $button_text . '</a></div><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-fill"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '#go">' . $cta_button_text . '</a></div></div>';
+					} else {
+						$loop .= '<div class="is-horizontal is-content-justification-center is-nowrap is-layout-flex wp-block-buttons"><div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link has-contrast-color has-text-color wp-element-button" href="' . esc_attr(get_permalink()) . '">' . $button_text . '</a></div></div>';
+					}
 				}
 
 				if ($atts['show_content']) {
