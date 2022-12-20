@@ -121,6 +121,7 @@ class EventPress_Pro
 
 		add_shortcode('event_details', array($this, 'event_details_shortcode'));
 		add_shortcode('event_posts', array($this, 'event_posts_shortcode'));
+		add_shortcode('event_heading', array($this, 'event_posts_heading'));
 
 		add_action('admin_enqueue_scripts', array($this, 'admin_js'));
 
@@ -369,6 +370,9 @@ class EventPress_Pro
 		}
 	}
 
+	public function event_posts_shortcode($atts)
+	{
+	}
 	/**
 	 * Shortcode.
 	 *
