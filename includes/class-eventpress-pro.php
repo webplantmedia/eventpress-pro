@@ -122,7 +122,6 @@ class EventPress_Pro
 
 		add_shortcode('event_details', array($this, 'event_details_shortcode'));
 		add_shortcode('event_posts', array($this, 'event_posts_shortcode'));
-		add_shortcode('event_heading', array($this, 'event_heading'));
 
 		add_action('admin_enqueue_scripts', array($this, 'admin_js'));
 
@@ -388,32 +387,6 @@ class EventPress_Pro
 		}
 	}
 
-	public function event_heading($atts)
-	{
-		$events               = array();
-		$events['time_range'] = genesis_get_custom_field('_event_time_range');
-		$events['timestamp']  = genesis_get_custom_field('_event_timestamp');
-
-		$day = date('d', $events['timestamp']);
-		$month = date('M', $events['timestamp']);
-
-		$post_info = '<span class="date-box">';
-		$post_info .= '<span class="day-box observer__flipInX">';
-		$post_info .= $day;
-		$post_info .= '</span>';
-		$post_info .= '<span class="month-box observer__flipInX animate__delay-300ms">';
-		$post_info .= $month;
-		$post_info .= '</span>';
-		$post_info .= '</span>';
-
-		$post_info .= '<time class="entry-time">';
-		if ($events['time_range']) {
-			$post_info .= '<i class="ion-android-time"></i>' . wp_kses_post($events['time_range']);
-		}
-		$post_info .= '</time>';
-
-		echo $post_info;
-	}
 	/**
 	 * Shortcode.
 	 *
