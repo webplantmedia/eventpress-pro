@@ -112,6 +112,7 @@ class EventPress_Pro
 		);
 
 		add_action('init', array($this, 'create_post_type'));
+		add_action('init', array($this, 'register_post_meta'));
 
 		add_filter('manage_edit-event_columns', array($this, 'columns_filter'));
 		add_action('manage_posts_custom_column', array($this, 'columns_data'));
@@ -121,7 +122,7 @@ class EventPress_Pro
 
 		add_shortcode('event_details', array($this, 'event_details_shortcode'));
 		add_shortcode('event_posts', array($this, 'event_posts_shortcode'));
-		add_shortcode('event_heading', array($this, 'event_posts_heading'));
+		add_shortcode('event_heading', array($this, 'event_heading'));
 
 		add_action('admin_enqueue_scripts', array($this, 'admin_js'));
 
@@ -176,6 +177,23 @@ class EventPress_Pro
 			}
 		}
 	}
+	public function register_post_meta()
+	{
+		register_meta('post', '_event_timestamp', array(
+			'type'          => 'number',
+			'single'        => true,
+			'show_in_rest'  => true,
+		));
+		register_meta(
+			'post',
+			'_event_time_range',
+			array(
+				'type'          => 'string',
+				'single'        => true,
+				'show_in_rest'  => true,
+			)
+		);
+	}
 	/**
 	 * Creates our "Event" post type.
 	 */
@@ -205,7 +223,7 @@ class EventPress_Pro
 				'menu_icon'     => 'dashicons-calendar-alt',
 				'has_archive'   => 'events-archive',
 				'show_in_rest'  => true,
-				'supports'      => array('title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars', 'genesis-cpt-archives-settings'),
+				'supports'      => array('title', 'page-attributes', 'author', 'editor', 'excerpt', 'revisions', 'thumbnail', 'custom-fields', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars', 'genesis-cpt-archives-settings'),
 				'rewrite'       => array('slug' => 'events'),
 			)
 		);
@@ -370,8 +388,31 @@ class EventPress_Pro
 		}
 	}
 
-	public function event_posts_shortcode($atts)
+	public function event_heading($atts)
 	{
+		$events               = array();
+		$events['time_range'] = genesis_get_custom_field('_event_time_range');
+		$events['timestamp']  = genesis_get_custom_field('_event_timestamp');
+
+		$day = date('d', $events['timestamp']);
+		$month = date('M', $events['timestamp']);
+
+		$post_info = '<span class="date-box">';
+		$post_info .= '<span class="day-box observer__flipInX">';
+		$post_info .= $day;
+		$post_info .= '</span>';
+		$post_info .= '<span class="month-box observer__flipInX animate__delay-300ms">';
+		$post_info .= $month;
+		$post_info .= '</span>';
+		$post_info .= '</span>';
+
+		$post_info .= '<time class="entry-time">';
+		if ($events['time_range']) {
+			$post_info .= '<i class="ion-android-time"></i>' . wp_kses_post($events['time_range']);
+		}
+		$post_info .= '</time>';
+
+		echo $post_info;
 	}
 	/**
 	 * Shortcode.
