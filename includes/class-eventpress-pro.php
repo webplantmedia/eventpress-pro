@@ -68,6 +68,7 @@ class EventPress_Pro
 					__('Meeting ID:', 'eventpress-pro') => '_meeting_id',
 					__('Event Tag:', 'eventpress-pro') => '_event_tag',
 					__('Download Link:', 'eventpress-pro') => '_download_link',
+					__('Private Event', 'eventpress-pro') => '_event_private',
 				),
 			)
 		);
@@ -395,6 +396,10 @@ class EventPress_Pro
 	public function event_posts_shortcode($atts)
 	{
 		global $post;
+		global $wpdb;
+
+		$sql = "SELECT wp_posts.ID FROM wp_posts INNER JOIN wp_postmeta ON ( wp_posts.ID = wp_postmeta.post_id ) WHERE 1=1 AND wp_postmeta.meta_key='_event_private' and wp_postmeta.meta_value = '1'";
+		$exclude = $wpdb->get_col($sql);
 
 		$atts = shortcode_atts(
 			array(
@@ -426,10 +431,10 @@ class EventPress_Pro
 
 		$query_args = array(
 			'post_type'      => 'event',
-			'posts_per_page' => $atts['posts_per_page'],
+			'posts_per_page' => intval($atts['posts_per_page']),
 			'paged'          => get_query_var('paged') ? get_query_var('paged') : 1,
-			'meta_key'       => '_event_timestamp',
-			'orderby'        => 'meta_value_num',
+			// 'meta_key'       => '_event_timestamp',
+			// 'orderby'        => 'meta_value_num',
 			'order'          => 'ASC',
 		);
 
@@ -437,10 +442,21 @@ class EventPress_Pro
 			$query_args['tax_query'] = $tax_query;
 		}
 
+		if ($exclude) {
+			$query_args['post__not_in'] = $exclude;
+		}
+
 		$time = current_time('timestamp'); // the day of the event, starting at 12am
 		$now = $time - (1 * 24 * 60 * 60); // need to subtract 24 hours to expire event at midnight
+		$meta_query = array();
+		// $meta_query['relation'] = 'AND';
+		// $meta_query['private_clause'] = array(
+		// 'key'     => '_event_private',
+		// 'value'   => 1,
+		// 'compare' => '=',
+		// );
 		if ($atts['past']) {
-			$meta_query = array(
+			$meta_query['time_clause'] = array(
 				'key'     => '_event_timestamp',
 				'value'   => $now,
 				'compare' => '<=',
@@ -448,11 +464,12 @@ class EventPress_Pro
 			$query_args['order'] = 'DESC';
 			$query_args['meta_query'] = $meta_query;
 		} else {
-			$meta_query = array(
-				'key'     => '_event_timestamp',
-				'value'   => $now,
-				'compare' => '>',
-			);
+			$meta_query['time_clause'] =
+				array(
+					'key'     => '_event_timestamp',
+					'value'   => $now,
+					'compare' => '>',
+				);
 
 			$query_args['meta_query'] = $meta_query;
 		}
@@ -460,6 +477,10 @@ class EventPress_Pro
 		$html = '';
 		$date_format = get_option('date_format');
 		$query = new WP_Query($query_args);
+
+		// global $wpdb;
+		// echo $wpdb->last_query;
+
 		$post_count = $query->post_count;
 
 		if ($post_count < 3) {
@@ -492,6 +513,7 @@ class EventPress_Pro
 				$events['meetingid'] = genesis_get_custom_field('_meeting_id');
 				$events['eventtag'] = genesis_get_custom_field('_event_tag');
 				$events['downloadlink'] = genesis_get_custom_field('_download_link');
+				$events['private'] = genesis_get_custom_field('_event_private');
 
 				$day = date('d', $events['timestamp']);
 				$month = date('M', $events['timestamp']);
