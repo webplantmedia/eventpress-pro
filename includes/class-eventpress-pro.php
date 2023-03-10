@@ -433,8 +433,8 @@ class EventPress_Pro
 			'post_type'      => 'event',
 			'posts_per_page' => intval($atts['posts_per_page']),
 			'paged'          => get_query_var('paged') ? get_query_var('paged') : 1,
-			// 'meta_key'       => '_event_timestamp',
-			// 'orderby'        => 'meta_value_num',
+			'meta_key'       => '_event_timestamp',
+			'orderby'        => 'meta_value_num',
 			'order'          => 'ASC',
 		);
 
