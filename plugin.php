@@ -151,8 +151,8 @@ function eventpress_register_widgets()
  * @param int    $post_id Optional. Post ID to use for Post Meta lookup, defaults to `get_the_ID()`.
  * @return string|bool Return value or empty string on failure.
  */
-if (!function_exists('genesis_get_custom_field')) {
-	function genesis_get_custom_field($field, $post_id = null)
+if (!function_exists('eventpress_pro_genesis_get_custom_field')) {
+	function eventpress_pro_genesis_get_custom_field($field, $post_id = null)
 	{
 
 		// Use get_the_ID() if no $post_id is specified.
@@ -171,8 +171,8 @@ if (!function_exists('genesis_get_custom_field')) {
 		return is_array($custom_field) ? $custom_field : wp_kses_decode_entities($custom_field);
 	}
 }
-if (!function_exists('genesis_get_image_id')) {
-	function genesis_get_image_id($index = 0, $post_id = null)
+if (!function_exists('eventpress_pro_genesis_get_image_id')) {
+	function eventpress_pro_genesis_get_image_id($index = 0, $post_id = null)
 	{
 
 		$image_ids = array_keys(
@@ -194,8 +194,8 @@ if (!function_exists('genesis_get_image_id')) {
 		return false;
 	}
 }
-if (!function_exists('genesis_get_image')) {
-	function genesis_get_image($args = [])
+if (!function_exists('eventpress_pro_genesis_get_image')) {
+	function eventpress_pro_genesis_get_image($args = [])
 	{
 
 		$defaults = [
@@ -209,7 +209,7 @@ if (!function_exists('genesis_get_image')) {
 		];
 
 		/**
-		 * A filter on the default parameters used by `genesis_get_image()`.
+		 * A filter on the default parameters used by `eventpress_pro_genesis_get_image()`.
 		 *
 		 * @since unknown
 		 */
@@ -228,7 +228,7 @@ if (!function_exists('genesis_get_image')) {
 			$id = get_post_thumbnail_id($args['post_id']);
 		} elseif ('first-attached' === $args['fallback']) {
 			// Else if the first (default) image attachment is the fallback, use its id.
-			$id = genesis_get_image_id($args['num'], $args['post_id']);
+			$id = eventpress_pro_genesis_get_image_id($args['num'], $args['post_id']);
 		} elseif (is_int($args['fallback'])) {
 			// Else if fallback id is supplied, use it.
 			$id = $args['fallback'];
@@ -268,6 +268,6 @@ if (!function_exists('genesis_get_image')) {
 		}
 
 		// Return data, filtered.
-		return apply_filters('genesis_get_image', $output, $args, $id, $html, $url, $src);
+		return apply_filters('eventpress_pro_genesis_get_image', $output, $args, $id, $html, $url, $src);
 	}
 }

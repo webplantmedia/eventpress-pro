@@ -498,25 +498,56 @@ class EventPress_Pro
 				// Initialze the $loop variable.
 				$loop = '';
 				$events = array();
-				$events['building'] = genesis_get_custom_field('_event_building');
-				$events['address'] = genesis_get_custom_field('_event_address');
-				$events['city'] = genesis_get_custom_field('_event_city');
-				$events['state'] = genesis_get_custom_field('_event_state');
-				$events['zip'] = genesis_get_custom_field('_event_zip');
-				$events['buttontext'] = genesis_get_custom_field('_event_button_text');
-				$events['ctabuttontext'] = genesis_get_custom_field('_event_cta_button_text');
-				$events['date'] = genesis_get_custom_field('_event_date');
-				$events['time_range'] = genesis_get_custom_field('_event_time_range');
-				$events['timestamp'] = genesis_get_custom_field('_event_timestamp');
-				$events['url'] = genesis_get_custom_field('_event_url');
-				$events['webinarid'] = genesis_get_custom_field('_webinar_id');
-				$events['meetingid'] = genesis_get_custom_field('_meeting_id');
-				$events['eventtag'] = genesis_get_custom_field('_event_tag');
-				$events['downloadlink'] = genesis_get_custom_field('_download_link');
-				$events['private'] = genesis_get_custom_field('_event_private');
+				$events['building'] = eventpress_pro_genesis_get_custom_field('_event_building');
+				$events['address'] = eventpress_pro_genesis_get_custom_field('_event_address');
+				$events['city'] = eventpress_pro_genesis_get_custom_field('_event_city');
+				$events['state'] = eventpress_pro_genesis_get_custom_field('_event_state');
+				$events['zip'] = eventpress_pro_genesis_get_custom_field('_event_zip');
+				$events['buttontext'] = eventpress_pro_genesis_get_custom_field('_event_button_text');
+				$events['ctabuttontext'] = eventpress_pro_genesis_get_custom_field('_event_cta_button_text');
+				$events['date'] = eventpress_pro_genesis_get_custom_field('_event_date');
+				$events['time_range'] = eventpress_pro_genesis_get_custom_field('_event_time_range');
+				$events['timestamp'] = eventpress_pro_genesis_get_custom_field('_event_timestamp');
+				$events['url'] = eventpress_pro_genesis_get_custom_field('_event_url');
+				$events['webinarid'] = eventpress_pro_genesis_get_custom_field('_webinar_id');
+				$events['meetingid'] = eventpress_pro_genesis_get_custom_field('_meeting_id');
+				$events['eventtag'] = eventpress_pro_genesis_get_custom_field('_event_tag');
+				$events['downloadlink'] = eventpress_pro_genesis_get_custom_field('_download_link');
+				$events['private'] = eventpress_pro_genesis_get_custom_field('_event_private');
+
+				$value = $events['time_range'];
+				$timestamp = $events['timestamp'];
+				$date = date('M d, Y', $timestamp);
+				$search = array();
+				$replace = array();
+				$gmtTimestamp = $timestamp;
+				$first = true;
+
+				preg_match_all("/(\d+:\d+\s{0,1}[ap]m)/i", $value, $matches);
+				if (array_key_exists(0, $matches) && sizeof($matches[0]) > 0) {
+					foreach ($matches[0] as $match) {
+						print_r($date, ", " . $match);
+						$gmtTime = date('g:i A', strtotime($date . ", " . $match) + 21600);
+						if ($first == $gmtTime) {
+							$gmtTimestamp = strtotime($date . ", " . $match) + 21600;
+						}
+						$search[] = $match;
+						$replace[] = $gmtTime;
+						$first = false;
+					}
+				}
+				if (sizeof($replace) > 0) {
+					$search[] = 'CT';
+					$replace[] = 'GMT';
+					$search[] = 'CST';
+					$replace[] = 'GMT';
+				}
+				$gmtValue = str_replace($search, $replace, $value);
 
 				$day = date('d', $events['timestamp']);
 				$month = date('M', $events['timestamp']);
+				$gmtDay = date('d', $gmtTimestamp);
+				$gmtMonth = date('M', $gmtTimestamp);
 
 				$search = array('Mar', 'Apr', 'May', 'Jun', 'Jul', 'Sep');
 				$replace = array('March', 'April', 'May', 'June', 'July', 'Sept');
@@ -527,15 +558,15 @@ class EventPress_Pro
 				}
 
 				$loop .= '<div class="pic">';
-				$loop .= sprintf('<a class="entry-image-link" href="%1$s">%2$s</a>', get_permalink(), genesis_get_image(array('size' => $atts['size'])));
+				$loop .= sprintf('<a class="entry-image-link" href="%1$s">%2$s</a>', get_permalink(), eventpress_pro_genesis_get_image(array('size' => $atts['size'])));
 				$loop .= '</div>';
 
 				$loop .= '<div class="date-box">';
 				$loop .= '<div class="day-box observer__flipInX">';
-				$loop .= $day;
+				$loop .= '<span class="cst-time">' . $day . '</span><span class="gmt-time">' . $gmtDay . '</span>';
 				$loop .= '</div>';
 				$loop .= '<div class="month-box observer__flipInX animate__delay-300ms">';
-				$loop .= $month;
+				$loop .= '<span class="cst-time">' . $month . '</span><span class="gmt-time">' . $gmtMonth . '</span>';
 				$loop .= '</div>';
 				$loop .= '</div>';
 
@@ -545,7 +576,7 @@ class EventPress_Pro
 				$loop .= '<p class="entry-meta">';
 				$loop .= '<time class="entry-time">';
 				if ($events['time_range']) {
-					$loop .= '<span class="gallop-svg-icon">' . $time_svg . '</span>' . wp_kses_post($events['time_range']);
+					$loop .= '<span class="gallop-svg-icon">' . $time_svg . '</span><span class="cst-time">' . $value . '</span><span class="gmt-time">' . $gmtValue . '</span>';
 				}
 				$loop .= '</time>';
 				$loop .= '</p>';
