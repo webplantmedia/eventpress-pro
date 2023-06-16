@@ -538,9 +538,9 @@ class EventPress_Pro
 				}
 				if (sizeof($replace) > 0) {
 					$search[] = 'CT';
-					$replace[] = 'GMT';
+					$replace[] = 'BST';
 					$search[] = 'CST';
-					$replace[] = 'GMT';
+					$replace[] = 'BST';
 				}
 				$gmtValue = str_replace($search, $replace, $value);
 
