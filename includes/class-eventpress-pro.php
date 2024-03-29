@@ -643,7 +643,7 @@ class EventPress_Pro
 					$loop .= '<div class="entry-footer">';
 					$loop .= '<p class="entry-meta">';
 					$loop .= '<span>';
-					$loop .= __('Locaton: ', 'eventpress-pro');
+					$loop .= __('Location: ', 'eventpress-pro');
 					$loop .= '<a href="' . $link . '" target="_blank">';
 					$loop .= $address;
 					$loop .= '</a>';
